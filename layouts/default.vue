@@ -58,7 +58,9 @@
       </v-btn>
     </v-app-bar> -->
     <v-app-bar class="white">
-      <v-icon class="ml-2 mr-6" x-large color="blue darken-2">mdi-linkedin</v-icon>
+      <v-icon class="ml-2 mr-6" x-large color="blue darken-2"
+        >mdi-linkedin</v-icon
+      >
       <v-divider vertical></v-divider>
       <div
         v-for="(item, idx) in navbarIcons"
@@ -76,7 +78,7 @@
         <small>{{ item.title }}</small>
       </div>
       <v-divider vertical></v-divider>
-      <div style="height: 100%; flex-grow: 1;">
+      <div style="height: 100%; flex-grow: 1">
         <v-text-field
           flat
           outlined
@@ -87,22 +89,22 @@
         </v-text-field>
       </div>
       <v-divider vertical></v-divider>
-      <v-avatar style="flex-shrink: 2;" min-width="36" right class="mx-4">
+      <v-avatar style="flex-shrink: 2" min-width="36" right class="mx-4">
         <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
       </v-avatar>
-      <div style="flex-grow: 1;">
-        <div>D. Kargaev &nbsp; <span style="color: #bdbdbd">YOU</span></div>
+      <div style="flex-grow: 1">
+        <div>D. Kargaev &nbsp; <span class="grey--text">YOU</span></div>
         <div>
-          <span> 367 views today</span>
-          <span>+32</span>
+          <span class="grey--text"> 367 views today</span>
+          <span class="green--text text--accent-4">+32</span>
           <v-icon small color="green accent-4">mdi-arrow-top-right</v-icon>
         </div>
       </div>
       <v-divider vertical></v-divider>
-      <div style="flex-grow: 1;">
+      <div style="flex-grow: 1">
         <div class="d-flex flex-wrap flex-column align-center">
-          <v-icon>mdi-more</v-icon>
-          <div>OTHER</div>
+          <v-icon>mdi-dots-horizontal</v-icon>
+          <small>OTHER</small>
         </div>
       </div>
       <v-divider vertical></v-divider>
@@ -122,8 +124,44 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+    <v-footer :absolute="!fixed" app class="justify-space-around align-start pa-4">
+      <div>
+        <v-icon class="ml-2 mr-6" x-large color="blue darken-2"
+          >mdi-linkedin
+        </v-icon>
+        <div class="font-weight-bold">Linked<span class="blue--text">In</span></div>
+      </div>
+      <div>
+        <div class="text-subtitle-2 mb-4">Navigation</div>
+        <div class="d-flex">
+          <ul v-for="(item, idx) in footerList" :key="idx">
+            <li v-for="(ele, id) in item.content" :key="id" class="text-body-2 grey--text text--darken-1 mb-2">{{ ele.name }}</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="text-subtitle-2 mb-4">Fast access</div>
+        <div class="d-flex flex-column">
+          <v-btn color="blue darken-2" class="mb-3">
+            <span class="white--text">QUESTIONS?</span>
+            <v-icon right color="white">mdi-comment-question-outline </v-icon>
+          </v-btn>
+          <v-btn outlined color="blue darken-2">
+            SETTINGS?&nbsp;
+            <v-icon right color="dark">mdi-comment-question-outline</v-icon>
+          </v-btn>
+        </div>
+      </div>
+      <div>
+        <div class="text-subtitle-2 mb-4">Language</div>
+        <v-select
+          solo
+          :items="languageItems"
+          label=""
+          dense
+          v-model="language"
+        ></v-select>
+      </div>
     </v-footer>
   </v-app>
 </template>
@@ -175,6 +213,55 @@ export default {
           to: "/inspire",
         },
       ],
+      footerList: [
+        {
+          content: [
+            {
+              name: "About",
+            },
+            {
+              name: "Careers",
+            },
+            {
+              name: "Advertising",
+            },
+            {
+              name: "Small Business",
+            },
+          ],
+        },
+        {
+          content: [
+            {
+              name: "Talent Solutions",
+            },
+            {
+              name: "Marketing Solutions",
+            },
+            {
+              name: "Sales Solutions",
+            },
+            {
+              name: "Safety Center",
+            },
+          ],
+        },
+        {
+          content: [
+            {
+              name: "Community Guidelines",
+            },
+            {
+              name: "Privacy & Terms",
+            },
+            {
+              name: "Mobile App",
+            },
+          ],
+        },
+      ],
+      language: "ENGLISH",
+      languageItems: ["ENGLISH", "CHINESE"],
       miniVariant: false,
       right: true,
       rightDrawer: false,
@@ -183,3 +270,8 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+ul {
+  list-style-type: none;
+}
+</style>

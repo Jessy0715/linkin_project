@@ -86,9 +86,9 @@
           >Show all (12)</small
         >
       </v-card>
-      <v-card>
+      <v-card class="pa-4">
         <div class="text-h6 font-weight-bold mb-4">Skills & Endoresments</div>
-        <v-row justify="center" align="center">
+        <v-row justify="center" align="center" class="mb-2">
           <v-col
             cols="12"
             sm="4"
@@ -96,16 +96,29 @@
             v-for="(item, idx) in skillLists"
             :key="idx"
           >
-            <v-list-item style="border: 1px solid red; border-radius: 5px">
+            <v-list-item style="border: 1px solid #eee; border-radius: 5px">
               <v-list-item-content>
                 <div class="d-flex">
                   <div class="font-weight-medium">{{ item.title }}</div>
                   <v-spacer></v-spacer>
-                  <div class="blue--text text--darken-2v font-weight-medium">
+                  <div class="blue--text text--darken-2 font-weight-medium">
                     {{ item.num }}
                   </div>
                 </div>
-                a
+                <section class="avatars-group pa-3 stacked">
+                  <div
+                    v-for="avatar in avatarsStackedLimited"
+                    :key="`avatar-id-${avatar.id}`"
+                    class="avatars-group__item"
+                  >
+                    <img-group :avatar="avatar"></img-group>
+                  </div>
+                  <div class="avatars-group__item more">
+                    <v-avatar color="primary" size="36px">
+                      <span class="white--text">+ {{ item.moreNum }}</span>
+                    </v-avatar>
+                  </div>
+                </section>
               </v-list-item-content>
             </v-list-item>
           </v-col>
@@ -135,10 +148,12 @@
 
 <script>
 import ProjectList from "@/components/lists/ProjectList";
+import ImgGroup from "@/components/ImgGroup";
 export default {
   name: "IndexPage",
   components: {
     ProjectList,
+    ImgGroup,
   },
   data() {
     return {
@@ -179,18 +194,177 @@ export default {
         {
           title: "User experience (UX)",
           num: 6,
+          moreNum: 2
         },
         {
           title: "User interface (UI)",
           num: 7,
+          moreNum: 3
         },
         {
           title: "Brand identity",
           num: 5,
+          moreNum: 1
         },
       ],
+      avatars: [
+        {
+          alt: "John Smitt",
+          id: 1,
+          presence: "Online",
+          role: "Frontend Engineer",
+          src: null,
+        },
+        {
+          alt: "Joanne Swizzlette",
+          id: 2,
+          presence: "Away",
+          role: "Automation Engineer",
+          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+        },
+        {
+          alt: "Frankie Dowle",
+          id: 4,
+          presence: "Online",
+          role: "Platform Architect",
+          src: "https://randomuser.me/api/portraits/med/men/8.jpg",
+        },
+        {
+          alt: "Annette Walker",
+          id: 5,
+          presence: "Online",
+          role: "Head of UX",
+          src: "https://randomuser.me/api/portraits/med/women/5.jpg",
+        },
+        {
+          alt: "Danny Quaide",
+          id: 6,
+          presence: "Offline",
+          role: "UI Designer",
+          src: "https://randomuser.me/api/portraits/med/men/10.jpg",
+        },
+        {
+          alt: "Paisley Arch",
+          id: 7,
+          presence: "Holiday",
+          role: "Automation Engineer",
+          src: "https://randomuser.me/api/portraits/med/women/7.jpg",
+        },
+        {
+          alt: "Kenneth Boomstang",
+          id: 8,
+          presence: "Online",
+          role: "Frontend Engineer",
+          src: "https://randomuser.me/api/portraits/med/men/1.jpg",
+        },
+        {
+          alt: "Donna Avery",
+          id: 9,
+          presence: "Online",
+          role: "UX Researcher",
+          src: "https://randomuser.me/api/portraits/med/women/2.jpg",
+        },
+        {
+          alt: "Phillip Hargreaves",
+          id: 10,
+          presence: "Online",
+          role: "Head of Quality",
+          src: "https://randomuser.me/api/portraits/med/men/11.jpg",
+        },
+        {
+          alt: "Melissa Tushoos",
+          id: 11,
+          presence: "Online",
+          role: "Head of Platform Engineering",
+          src: "https://randomuser.me/api/portraits/med/women/4.jpg",
+        },
+        {
+          alt: "Justin Backbeard",
+          id: 12,
+          presence: "Busy",
+          role: "Frontend Engineer",
+          src: "https://randomuser.me/api/portraits/med/men/13.jpg",
+        },
+        {
+          alt: "Amy Fullerton",
+          id: 13,
+          presence: "Busy",
+          role: "UI Designer",
+          src: "https://randomuser.me/api/portraits/med/women/6.jpg",
+        },
+        {
+          alt: "Angus Dougherty",
+          id: 14,
+          presence: "Online",
+          role: "Backend Engineer",
+          src: null,
+        },
+        {
+          alt: "Jess Cransley",
+          id: 15,
+          presence: "Online",
+          role: "UX Advocate",
+          src: "https://randomuser.me/api/portraits/med/women/8.jpg",
+        },
+        {
+          alt: "Barry Morgan",
+          id: 16,
+          presence: "Away",
+          role: "Frontend Architect",
+          src: "https://randomuser.me/api/portraits/med/men/17.jpg",
+        },
+        {
+          alt: "Warren Deekead",
+          id: 17,
+          presence: "Online",
+          role: "Backend Engineer",
+          src: "https://randomuser.me/api/portraits/med/men/19.jpg",
+        },
+        {
+          alt: "Melissa Warmslent",
+          id: 18,
+          presence: "Holiday",
+          role: "DevOps Engineer",
+          src: "https://randomuser.me/api/portraits/med/women/12.jpg",
+        },
+      ],
+      stackedLimit: 4,
     };
+  },
+  computed: {
+    avatarsSorted() {
+      return this.avatars && this.avatars.length > 0
+        ? this.avatars.sort((a, b) => a.alt.localeCompare(b.alt))
+        : null;
+    },
+    avatarsStackedLimited() {
+      return this.avatarsSorted && this.avatarsSorted.length > 0
+        ? this.avatarsSorted.slice(0, this.stackedLimit)
+        : null;
+    },
   },
   mounted() {},
 };
 </script>
+<style lang="scss"scoped>
+.avatars-group.stacked {
+  display: flex;
+  flex-direction: row;
+  direction: ltr;
+  max-width: 100%;
+  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.avatars-group.stacked > * {
+  margin-right: -8px;
+}
+.avatars-group__item {
+  cursor: default;
+  transition: all 0.1s ease-out;
+}
+.avatars-group__item.more {
+  align-items: center;
+  display: flex;
+}
+</style>

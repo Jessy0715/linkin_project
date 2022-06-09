@@ -151,7 +151,7 @@
       </div>
     </v-col>
     <v-col cols="12" sm="4" md="4">
-      <v-card class="pa-4">
+      <v-card class="pa-4 mb-4">
         <div class="text-subtitle-1 text-center font-weight-bold mb-4">
           You may like these courses
         </div>
@@ -164,6 +164,16 @@
           >See all recommendations</small
         >
       </v-card>
+      <v-card class="mb-4">
+        <score-list :scoreList="scoreList"></score-list>
+      </v-card>
+      <v-card class="mb-4">
+        <tag-list></tag-list>
+      </v-card>
+      <v-card class="mb-4">
+        <btn-show></btn-show>
+      </v-card>
+      <side-list></side-list>
     </v-col>
   </v-row>
 </template>
@@ -172,12 +182,20 @@
 import ProjectList from "@/components/lists/ProjectList";
 import PublicList from "@/components/lists/PublicList";
 import ImgGroup from "@/components/ImgGroup";
+import ScoreList from "@/components/lists/ScoreList";
+import TagList from "@/components/lists/TagList";
+import BtnShow from "@/components/BtnShow";
+import SideList from "@/components/lists/SideList";
 export default {
   name: "IndexPage",
   components: {
     ProjectList,
     ImgGroup,
     PublicList,
+    ScoreList,
+    TagList,
+    BtnShow,
+    SideList
   },
   data() {
     return {
@@ -480,6 +498,20 @@ export default {
           workDuring: "",
           title: "Theresa Steward",
           intro: "",
+        },
+      ],
+      scoreList: [
+        {
+          score: 367,
+          text: "views today",
+        },
+        {
+          score: 15,
+          text: "posts views",
+        },
+        {
+          score: 9,
+          text: "search appearances",
         },
       ],
     };

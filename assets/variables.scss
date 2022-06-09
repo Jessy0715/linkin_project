@@ -6,3 +6,20 @@
 
 $input-prepend-append-outer-margin: 5px !default;
 $text-field-outlined-fieldset-border-width: 0px !default;
+
+$body-font-size: 14px;
+
+//字型大小定義
+
+.fz-xl {
+  font-size: $body-font-size * 1.714; //24px
+}
+.fz-larger {
+  font-size: $body-font-size * 1.285; //18px
+}
+.fz-normal {
+  font-size: $body-font-size * 1.142; //16px
+}
+.fz-sml {
+  font-size: $body-font-size; //14px
+}

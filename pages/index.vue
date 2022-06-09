@@ -86,7 +86,7 @@
           >Show all (12)</small
         >
       </v-card>
-      <v-card class="pa-4">
+      <v-card class="pa-4 mb-4">
         <div class="text-h6 font-weight-bold mb-4">Skills & Endoresments</div>
         <v-row justify="center" align="center" class="mb-2">
           <v-col
@@ -127,6 +127,28 @@
           >Show all (17)</small
         >
       </v-card>
+      <v-card class="pa-4 mb-4">
+        <div class="text-h6 font-weight-bold mb-4">Experience</div>
+        <public-list :list="experienceLists"></public-list>
+      </v-card>
+      <v-card class="pa-4 mb-4">
+        <div class="text-h6 font-weight-bold mb-4">Education</div>
+        <public-list :list="educationLists"></public-list>
+      </v-card>
+
+      <!-- High rated post from your feed -->
+      <div class="mb-4" color="#e8f1f8">
+        <public-list :list="feedLists" :isFeedPage="true"></public-list>
+      </div>
+
+      <!-- job -->
+      <div class="mb-4">
+        <public-list :list="jobLists" :isJobPage="true"></public-list>
+      </div>
+      <!-- network -->
+      <div class="mb-4">
+        <public-list :list="networkLists" :isNetworkPage="true"></public-list>
+      </div>
     </v-col>
     <v-col cols="12" sm="4" md="4">
       <v-card class="pa-4">
@@ -148,12 +170,14 @@
 
 <script>
 import ProjectList from "@/components/lists/ProjectList";
+import PublicList from "@/components/lists/PublicList";
 import ImgGroup from "@/components/ImgGroup";
 export default {
   name: "IndexPage",
   components: {
     ProjectList,
     ImgGroup,
+    PublicList,
   },
   data() {
     return {
@@ -194,17 +218,17 @@ export default {
         {
           title: "User experience (UX)",
           num: 6,
-          moreNum: 2
+          moreNum: 2,
         },
         {
           title: "User interface (UI)",
           num: 7,
-          moreNum: 3
+          moreNum: 3,
         },
         {
           title: "Brand identity",
           num: 5,
-          moreNum: 1
+          moreNum: 1,
         },
       ],
       avatars: [
@@ -329,6 +353,135 @@ export default {
         },
       ],
       stackedLimit: 4,
+      experienceLists: [
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          connections: "",
+          workRange: "Self Employed",
+          workRangeNote: "Around the world",
+          workDate: "Jun 2016 — Present",
+          workDuring: "3 yrs 3 mos",
+          title: "Freelance UX/UI designer",
+          intro:
+            "Work with clients and web studios as freelancer.  Work in next areas: eCommerce web projects; creative landing pages; iOs and Android apps; corporate web sites and corporate identity sometimes.",
+        },
+        { divider: true, inset: true },
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
+          connections: "",
+          workRange: "Upwork",
+          workRangeNote: "International",
+          workDate: "Jun 2019 — Present",
+          workDuring: "3 mos",
+          title: "UX/UI designer",
+          intro:
+            "New experience with Upwork system. Work in next areas: UX/UI design, graphic design, interaction design, UX research.",
+        },
+        { divider: true, inset: true },
+      ],
+      educationLists: [
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          connections: "",
+          workRange:
+            "Bachelor's degree Field Of StudyComputer and Information Systems Security/Information Assurance",
+          workRangeNote: "",
+          workDate: "2013 — 2017",
+          workDuring: "",
+          title: "Moscow State Linguistic University",
+          intro: "Additional English classes and UX profile courses​.",
+        },
+      ],
+      feedLists: [
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          connections: "",
+          workRange: "",
+          workRangeNote: "",
+          workDate: "PDF file, 324 kb",
+          workDuring: "",
+          title: "iOS 11 guidelines for UX/UI designers",
+          intro: "",
+        },
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          connections: "",
+          workRange: "",
+          workRangeNote: "",
+          workDate: "PDF file, 245 kb",
+          workDuring: "",
+          title: "iOS 11 guidelines for developers",
+          intro: "",
+        },
+      ],
+      jobLists: [
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          connections: "",
+          workRange: "Upwork",
+          workRangeNote: "Remote only",
+          workDate: "",
+          workDuring: "",
+          title: "UX/UI designer",
+          intro:
+            "On Upwork you'll find a range of top freelancers and agencies, from developers and development agencies to designers and creative agencies, copywriters",
+        },
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          connections: "",
+          workRange: "Facebook",
+          workRangeNote: "CA, USA",
+          workDate: "",
+          workDuring: "",
+          title: "Product designer",
+          intro:
+            "Founded in 2004, Facebook's mission is to give people the power to build community and bring the world closer together. People use our products to stay.",
+        },
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          connections: "",
+          workRange: "Google",
+          workRangeNote: "International",
+          workDate: "",
+          workDuring: "",
+          title: "Part-time UX designer",
+          intro:
+            "Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking.",
+        },
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          connections: "",
+          workRange: "LinkedIn",
+          workRangeNote: "CA, USA",
+          workDate: "",
+          workDuring: "",
+          title: "Web designer",
+          intro:
+            "LinkedIn, the world's largest professional network. The mission of LinkedIn is simple: connect the world's professional.",
+        },
+      ],
+      networkLists: [
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          connections: "623 connections",
+          workRange: "Senior UX designer",
+          workRangeNote: "",
+          workDate: "",
+          workDuring: "",
+          title: "Brandon Wilson",
+          intro: "",
+        },
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          connections: "481 connections",
+          workRange: "iOS developer",
+          workRangeNote: "",
+          workDate: "",
+          workDuring: "",
+          title: "Theresa Steward",
+          intro: "",
+        },
+      ],
     };
   },
   computed: {

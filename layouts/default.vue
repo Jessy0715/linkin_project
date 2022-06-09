@@ -84,7 +84,7 @@
           outlined
           height="100%"
           placeholder="Search"
-          prepend-inner-icon="mdi-account-search"
+          prepend-inner-icon="mdi-magnify"
         >
         </v-text-field>
       </div>

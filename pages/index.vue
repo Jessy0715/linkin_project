@@ -1,6 +1,7 @@
 <template>
   <v-row justify="center" align="start">
     <v-col cols="12" sm="8" md="8">
+      <post-card class="mb-4"></post-card>
       <v-card class="logo d-flex justify-center">
         <v-img src="https://picsum.photos/350/165?random" height="200px">
           <v-card-title>
@@ -149,6 +150,9 @@
       <div class="mb-4">
         <public-list :list="networkLists" :isNetworkPage="true"></public-list>
       </div>
+      <div class="mb-4">
+        <chat-list></chat-list>
+      </div>
     </v-col>
     <v-col cols="12" sm="4" md="4">
       <v-card class="pa-4 mb-4">
@@ -165,7 +169,7 @@
         >
       </v-card>
       <v-card class="mb-4">
-        <score-list :scoreList="scoreList"></score-list>
+        <score-list :list="scoreLists"></score-list>
       </v-card>
       <v-card class="mb-4">
         <tag-list></tag-list>
@@ -173,7 +177,9 @@
       <v-card class="mb-4">
         <btn-show></btn-show>
       </v-card>
-      <side-list></side-list>
+      <side-list class="mb-4" :list="sideLists"></side-list>
+      <avatar-card class="mb-4"></avatar-card>
+      <side-list class="mb-4" :list="sideLists2" :isNote="true"></side-list>
     </v-col>
   </v-row>
 </template>
@@ -186,6 +192,9 @@ import ScoreList from "@/components/lists/ScoreList";
 import TagList from "@/components/lists/TagList";
 import BtnShow from "@/components/BtnShow";
 import SideList from "@/components/lists/SideList";
+import AvatarCard from "@/components/AvatarCard";
+import ChatList from "@/components/lists/ChatList";
+import PostCard from "@/components/cards/PostCard";
 export default {
   name: "IndexPage",
   components: {
@@ -195,7 +204,10 @@ export default {
     ScoreList,
     TagList,
     BtnShow,
-    SideList
+    SideList,
+    AvatarCard,
+    ChatList,
+    PostCard
   },
   data() {
     return {
@@ -500,7 +512,7 @@ export default {
           intro: "",
         },
       ],
-      scoreList: [
+      scoreLists: [
         {
           score: 367,
           text: "views today",
@@ -513,6 +525,18 @@ export default {
           score: 9,
           text: "search appearances",
         },
+      ],
+      sideLists: [
+        { text: "Connections", num: 1038, icon: "mdi-clock", circle: false },
+        { text: "Invitations", num: 2, icon: "mdi-account", circle: true },
+        { text: "Teammates", num: 10, icon: "mdi-flag", circle: false },
+        { text: "groups", num: 6, icon: "mdi-clock", circle: false },
+        { text: "pages", num: 28, icon: "mdi-account", circle: false },
+        { text: "hashtags", num: 8, icon: "mdi-flag", circle: false },
+      ],
+      sideLists2: [
+        { text: "Notifications", num: null, icon: "", circle: false },
+        { text: "Notification settings", num: null, icon: "", circle: false },
       ],
     };
   },

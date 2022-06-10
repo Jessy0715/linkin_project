@@ -9,7 +9,7 @@
       </div>
     </div>
     <v-divider class="mb-2"></v-divider>
-    <v-list-item v-for="(item, idx) in scoreList" :key="idx">
+    <v-list-item v-for="(item, idx) in list" :key="idx">
       <v-list-item-content class="py-2">
         <v-list-item-title>
           <span class="blue--text text--darken-2 display-2 font-weight-bold" style="">{{ item.score }}</span>
@@ -25,7 +25,7 @@
 export default {
   name: "",
   props: {
-    scoreList: {
+    list: {
       type: Array,
     },
   },

@@ -3,8 +3,8 @@
     <v-col cols="12" :sm="isVertical? '12':'4'" :md="isVertical? '12':'4'" v-for="(item, idx) in lists" :key="idx">
       <v-card style="box-shadow: none" :class="{'d-flex': isVertical }">
         <v-img :src="require('../../assets/images/office.jpg')" :max-width="isVertical? '150': null">
-          <v-btn dark x-small color="primary" class="play-btn" v-if="isVideo">
-            <v-icon dark> mdi mdi-play </v-icon>
+          <v-btn dark x-small color="primary" class="play-btn" v-if="isVideo" max-width="25" max-height="25">
+            <v-icon dark size="20"> mdi mdi-play </v-icon>
           </v-btn>
         </v-img>
         <div class="pa-2">
@@ -44,6 +44,6 @@ export default {
 .play-btn {
   position: absolute;
   top: 40%;
-  left: 35%;
+  left: 40%;
 }
 </style>

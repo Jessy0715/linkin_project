@@ -1,6 +1,7 @@
 <template>
   <v-row justify="center" align="start">
     <v-col cols="12" sm="8" md="8">
+      <msg-card></msg-card>
       <post-card class="mb-4"></post-card>
       <v-card class="logo d-flex justify-center">
         <v-img src="https://picsum.photos/350/165?random" height="200px">
@@ -155,6 +156,9 @@
       </div>
     </v-col>
     <v-col cols="12" sm="4" md="4">
+      <sm-list :list="searchList" :isSearchPage="true"></sm-list>
+      <sm-list :list="visitorList"></sm-list>
+      <sm-list :list="groupList" :isGroupPage="true"></sm-list>
       <v-card class="pa-4 mb-4">
         <div class="text-subtitle-1 text-center font-weight-bold mb-4">
           You may like these courses
@@ -195,6 +199,8 @@ import SideList from "@/components/lists/SideList";
 import AvatarCard from "@/components/AvatarCard";
 import ChatList from "@/components/lists/ChatList";
 import PostCard from "@/components/cards/PostCard";
+import SmList from "@/components/lists/SmList";
+import MsgCard from "@/components/cards/MsgCard";
 export default {
   name: "IndexPage",
   components: {
@@ -207,7 +213,9 @@ export default {
     SideList,
     AvatarCard,
     ChatList,
-    PostCard
+    PostCard,
+    SmList,
+    MsgCard
   },
   data() {
     return {
@@ -537,6 +545,92 @@ export default {
       sideLists2: [
         { text: "Notifications", num: null, icon: "", circle: false },
         { text: "Notification settings", num: null, icon: "", circle: false },
+      ],
+      visitorList: [
+        {
+          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          name: "Darlene Black",
+          jobTitle: "HR-manager, 10 000 connection",
+          date: "26 aug, monday",
+          icon: "",
+          isRing: false,
+        },
+        {
+          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          name: "Theresa Steward",
+          jobTitle: "iOS developer",
+          date: "Yesterday, 12:03",
+          icon: "",
+          isRing: false,
+        },
+        {
+          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          name: "Brandon Wilson",
+          jobTitle: "Senior UX designer",
+          date: "25 aug, sunday",
+          icon: "",
+          isRing: false,
+        },
+        {
+          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          name: "Kyle Fisher",
+          jobTitle: "Product designer",
+          date: "26 aug, monday",
+          icon: "",
+          isRing: false,
+        },
+      ],
+      groupList: [
+        {
+          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          name: "<strong>Moscow State <br> Linguistical <br> University</strong>",
+          jobTitle: "",
+          date: "",
+          icon: "",
+          isRing: false,
+        },
+        {
+          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          name: "<strong>Digital freelancers <br> group</strong>",
+          jobTitle: "",
+          date: "",
+          icon: "",
+          isRing: false,
+        },
+        {
+          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          name: "<strong>Interaction<br> design<br> association</strong>",
+          jobTitle: "",
+          date: "",
+          icon: "",
+          isRing: false,
+        },
+      ],
+      searchList: [
+        {
+          src: "",
+          name: "UX/UI designer <span class='green--text text--accent-4'>+240</span>",
+          jobTitle: "Remote",
+          date: "",
+          icon: "mdi-bell-off",
+          isRing: true,
+        },
+        {
+          src: "",
+          name: "Web designer",
+          jobTitle: "Los-Angeles, CA",
+          date: "",
+          icon: "mdi-bell-outline",
+          isRing: true,
+        },
+        {
+          src: "",
+          name: "Graphic designer",
+          jobTitle: "Malaysia, Kuala Lumpur",
+          date: "",
+          icon: "mdi-bell-outline",
+          isRing: true,
+        },
       ],
     };
   },

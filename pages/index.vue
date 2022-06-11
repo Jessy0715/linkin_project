@@ -1,7 +1,35 @@
 <template>
   <v-row justify="center" align="start">
     <v-col cols="12" sm="8" md="8">
-      <msg-card></msg-card>
+      <msg-card v-for="(item, idx) in slotArray" :key="idx">
+        <small slot="state" v-html="item.state"></small>
+        <v-img
+          slot="avatar"
+          src="https://randomuser.me/api/portraits/med/women/3.jpg"
+        ></v-img>
+        <template slot="name">{{ item.name }}</template>
+        <template slot="jobTitle">{{ item.jobTitle }}</template>
+        <p class="text-body-1">
+          {{ item.context }}
+        </p>
+        <v-img
+          v-if="idx == 1"
+          :src="require('../assets/images/office.jpg')"
+          max-height="250"
+          class="mb-4"
+        ></v-img>
+        <public-list v-if="idx == 2" :list="feedLists" :isFeedPage="true"></public-list>
+        <!-- <v-btn
+          color="primary"
+          text
+          class="font-weight-bold text-uppercase mb-4 px-0"
+          @click="showText"
+        >
+          Read more</v-btn
+        > -->
+        <span slot="facebookNum">{{ item.facebookNum }}</span>
+        <span slot="msgNum">{{ item.msgNum }}</span>
+      </msg-card>
       <post-card class="mb-4"></post-card>
       <v-card class="logo d-flex justify-center">
         <v-img src="https://picsum.photos/350/165?random" height="200px">
@@ -215,7 +243,7 @@ export default {
     ChatList,
     PostCard,
     SmList,
-    MsgCard
+    MsgCard,
   },
   data() {
     return {
@@ -632,6 +660,49 @@ export default {
           isRing: true,
         },
       ],
+      slotArray: [
+        {
+          state:
+            "<span class='blue--text text--darken-2'>Ted Bell</span>,<span class='blue--text text--darken-2'>    Annette Nguyen</span>, and <span class='blue--text text--darken-2'>Cody Hawkins </span>liked this",
+          avatar: "",
+          name: "Theresa Steward",
+          jobTitle: "iOS developer",
+          context:
+            "What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer? What was it to the Dursleys if Harry went back to school without any of his homework done? The Dursleys were what wizards called Muggles (not a drop of magical blood in their veins).",
+          facebookNum: 42,
+          msgNum: 5,
+        },
+        {
+          state:
+            "<span class='blue--text text--darken-2'>Audrey Alexander</span> comment this",
+          avatar: "",
+          name: "Kyle Fisher",
+          jobTitle: "Product designer at Commandor Corp.",
+          context: "How’s your day going, guys?",
+          facebookNum: 12,
+          msgNum: 3,
+        },
+        {
+          state: "High rated post from your feed",
+          avatar: "",
+          name: "Brandon Wilson",
+          jobTitle: "Senior UX designer",
+          context: "There is some new guidelines for iOS",
+          facebookNum: 89,
+          msgNum: 7,
+        },
+        {
+          state:
+            "First post from <span class='blue--text text--darken-2'>Audrey Alexander</span>",
+          avatar: "",
+          name: "Audrey Alexander",
+          jobTitle: "Team lead at Google",
+          context:
+            "The bun runs along the road and meets a wolf. «Little bun, little bun, I want to eat you!» says the wolf. «I ran away from Grandfather, I ran away from Grandmother, I ran away from the hare. And I can run away from you, grey wolf!» says the bun and runs away.",
+          facebookNum: 10,
+          msgNum: 0,
+        },
+      ],
     };
   },
   computed: {
@@ -646,10 +717,15 @@ export default {
         : null;
     },
   },
+  methods: {
+    showText() {
+      console.log("text");
+    },
+  },
   mounted() {},
 };
 </script>
-<style lang="scss"scoped>
+<style lang="scss" scoped>
 .avatars-group.stacked {
   display: flex;
   flex-direction: row;

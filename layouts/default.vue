@@ -78,15 +78,63 @@
         <small>{{ item.title }}</small>
       </div>
       <v-divider vertical></v-divider>
-      <div style="height: 100%; flex-grow: 1">
-        <v-text-field
+      <div style="height: 100%; flex-grow: 1" class="pa-2">
+        <v-autocomplete
+          v-model="friends"
+          :items="people"
+          color="blue darken-2"
+          item-text="name"
+          item-value="name"
+          placeholder="Search"
+          append-outer-icon="mdi-magnify"
+          hide-no-data
+          
+        >
+          <template v-slot:selection="data">
+            <!-- <v-chip
+              v-bind="data.attrs"
+              :input-value="data.selected"
+              close
+              @click="data.select"
+              @click:close="remove(data.item)"
+            >
+              <v-avatar left>
+                <v-img :src="data.item.avatar"></v-img>
+              </v-avatar>
+              {{ data.item.name }}
+            </v-chip> -->
+            {{ data.item.name }}
+          </template>
+          <template v-slot:item="data">
+            <template v-if="typeof data.item !== 'object'">
+              <v-list-item-content v-text="data.item"></v-list-item-content>
+            </template>
+            <template v-else>
+              <v-list-item-avatar>
+                <img :src="data.item.avatar" />
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title v-html="data.item.name"></v-list-item-title>
+                <v-list-item-subtitle
+                  v-html="data.item.group"
+                ></v-list-item-subtitle>
+              </v-list-item-content>
+              <v-list-item-action>
+                <v-btn icon color="pink">
+                  <v-icon>mdi-heart</v-icon>
+                </v-btn>
+              </v-list-item-action>
+            </template>
+          </template>
+        </v-autocomplete>
+        <!-- <v-text-field
           flat
           outlined
           height="100%"
           placeholder="Search"
           prepend-inner-icon="mdi-magnify"
         >
-        </v-text-field>
+        </v-text-field> -->
       </div>
       <v-divider vertical></v-divider>
       <v-avatar style="flex-shrink: 2" min-width="36" right class="mx-4">
@@ -124,18 +172,30 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :absolute="!fixed" app class="justify-space-around align-start pa-4">
+    <v-footer
+      :absolute="!fixed"
+      app
+      class="justify-space-around align-start pa-4"
+    >
       <div>
         <v-icon class="ml-2 mr-6" x-large color="blue darken-2"
           >mdi-linkedin
         </v-icon>
-        <div class="font-weight-bold">Linked<span class="blue--text">In</span></div>
+        <div class="font-weight-bold">
+          Linked<span class="blue--text">In</span>
+        </div>
       </div>
       <div>
         <div class="text-subtitle-2 mb-4">Navigation</div>
         <div class="d-flex">
           <ul v-for="(item, idx) in footerList" :key="idx">
-            <li v-for="(ele, id) in item.content" :key="id" class="text-body-2 grey--text text--darken-1 mb-2">{{ ele.name }}</li>
+            <li
+              v-for="(ele, id) in item.content"
+              :key="id"
+              class="text-body-2 grey--text text--darken-1 mb-2"
+            >
+              {{ ele.name }}
+            </li>
           </ul>
         </div>
       </div>
@@ -167,6 +227,14 @@
 </template>
 
 <script>
+const srcs = {
+  1: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+  2: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
+  3: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
+  4: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
+  5: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
+};
+
 export default {
   name: "DefaultLayout",
   data() {
@@ -266,12 +334,54 @@ export default {
       right: true,
       rightDrawer: false,
       title: "Vuetify.js",
+      friends: "",
+      people: [
+        { header: "JOBS" },
+        { name: "UX/UI Designer", group: "Upwork", avatar: srcs[1] },
+        { name: "Part-time UX designer", group: "Google", avatar: srcs[2] },
+        { header: "All jobs (84)" },
+        { divider: true },
+        { header: "Users" },
+        {
+          name: "Brandon Wilson",
+          group: "Senior UX designer",
+          avatar: srcs[3],
+        },
+        {
+          name: "Kyle Fisher",
+          group: "Product designer at Commandor Corp.",
+          avatar: srcs[2],
+        },
+        { header: "All users (1,530)" },
+        { divider: true },
+        { header: "Articles" },
+        {
+          name: "A little about usability testing",
+          group: "3,912 viewers",
+          avatar: srcs[4],
+        },
+        { header: "All articles (30)" },
+      ],
     };
+  },
+  methods: {
+    remove(item) {
+      const index = this.friends.indexOf(item.name);
+      if (index >= 0) this.friends.splice(index, 1);
+    },
   },
 };
 </script>
 <style lang="scss" scoped>
 ul {
   list-style-type: none;
+}
+.v-list {
+  padding: 0 16px !important;
+}
+::v-deep .v-list .v-list-item {
+  border: 1px solid #eee !important;
+  width: 95% !important;
+  margin: 0 auto 16px auto !important;
 }
 </style>

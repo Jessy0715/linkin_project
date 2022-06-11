@@ -18,7 +18,11 @@
           max-height="250"
           class="mb-4"
         ></v-img>
-        <public-list v-if="idx == 2" :list="feedLists" :isFeedPage="true"></public-list>
+        <public-list
+          v-if="idx == 2"
+          :list="feedLists"
+          :isFeedPage="true"
+        ></public-list>
         <!-- <v-btn
           color="primary"
           text
@@ -217,6 +221,13 @@
 </template>
 
 <script>
+const srcs = {
+  1: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+  2: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
+  3: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
+  4: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
+  5: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
+};
 import ProjectList from "@/components/lists/ProjectList";
 import PublicList from "@/components/lists/PublicList";
 import ImgGroup from "@/components/ImgGroup";
@@ -720,6 +731,10 @@ export default {
   methods: {
     showText() {
       console.log("text");
+    },
+    remove(item) {
+      const index = this.friends.indexOf(item.name);
+      if (index >= 0) this.friends.splice(index, 1);
     },
   },
   mounted() {},

@@ -240,6 +240,7 @@ import ChatList from "@/components/lists/ChatList";
 import PostCard from "@/components/cards/PostCard";
 import SmList from "@/components/lists/SmList";
 import MsgCard from "@/components/cards/MsgCard";
+import Drawer from "@/components/Drawer";
 export default {
   name: "IndexPage",
   components: {
@@ -255,6 +256,7 @@ export default {
     PostCard,
     SmList,
     MsgCard,
+    Drawer
   },
   data() {
     return {

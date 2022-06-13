@@ -88,7 +88,6 @@
           placeholder="Search"
           append-outer-icon="mdi-magnify"
           hide-no-data
-          
         >
           <template v-slot:selection="data">
             <!-- <v-chip
@@ -150,7 +149,11 @@
       </div>
       <v-divider vertical></v-divider>
       <div style="flex-grow: 1">
-        <div class="d-flex flex-wrap flex-column align-center">
+        <div
+          class="d-flex flex-wrap flex-column align-center"
+          style="cursor: pointer"
+          @click.stop="rightDrawer = !rightDrawer"
+        >
           <v-icon>mdi-dots-horizontal</v-icon>
           <small>OTHER</small>
         </div>
@@ -162,16 +165,7 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light> mdi-repeat </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    <drawer :rightDrawer="rightDrawer" @check="checkDrawer"></drawer>
     <v-footer
       :absolute="!fixed"
       app
@@ -369,6 +363,13 @@ export default {
       const index = this.friends.indexOf(item.name);
       if (index >= 0) this.friends.splice(index, 1);
     },
+    checkDrawer() {
+      this.rightDrawer = false
+      console.log('3', this.rightDrawer);
+    }
+  },
+  mounted() {
+    console.log('1',this.rightDrawer);
   },
 };
 </script>

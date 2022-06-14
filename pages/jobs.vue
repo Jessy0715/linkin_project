@@ -196,7 +196,7 @@ export default {
       ],
       trackedLists: [
         {
-          src: "https://rand【omuser.me/api/portraits/med/women/3.jpg",
+          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
           name: "UX/UI Designer",
           jobTitle: "Upwork",
           date: "",

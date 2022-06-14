@@ -136,7 +136,21 @@
       </v-card>
     </v-col>
     <v-col cols="12" sm="4" md="4">
-      <sm-list :list="visitorList"></sm-list>
+      <v-card class="mb-4">
+        <score-list :list="scoreLists"></score-list>
+      </v-card>
+      <v-card class="py-4 px-6 mb-6" style="background: #fcfefd">
+        <div
+          class="d-flex justify-space-between align-center text-uppercase my-2"
+        >
+          <div class="font-weight-medium">visitors</div>
+          <div class="font-weight-medium blue--text text--darken-2">
+            view all
+          </div>
+        </div>
+        <v-divider class="my-4"></v-divider>
+        <sm-list :list="trackedLists"></sm-list>
+      </v-card>
       <v-card class="pa-4 mb-4">
         <div class="text-subtitle-1 text-center font-weight-bold mb-4">
           You may like these courses
@@ -149,12 +163,6 @@
         <small class="blue--text text--darken-2 font-weight-bold text-uppercase"
           >See all recommendations</small
         >
-      </v-card>
-      <v-card class="mb-4">
-        <score-list :list="scoreLists"></score-list>
-      </v-card>
-      <v-card class="mb-4">
-        <btn-show></btn-show>
       </v-card>
     </v-col>
   </v-row>
@@ -172,7 +180,6 @@ import ProjectList from "@/components/lists/ProjectList";
 import PublicList from "@/components/lists/PublicList";
 import ImgGroup from "@/components/ImgGroup";
 import ScoreList from "@/components/lists/ScoreList";
-import BtnShow from "@/components/BtnShow";
 import SmList from "@/components/lists/SmList";
 export default {
   name: "IndexPage",
@@ -181,7 +188,6 @@ export default {
     ImgGroup,
     PublicList,
     ScoreList,
-    BtnShow,
     SmList,
   },
   data() {
@@ -415,36 +421,20 @@ export default {
         { text: "Notifications", num: null, icon: "", circle: false },
         { text: "Notification settings", num: null, icon: "", circle: false },
       ],
-      visitorList: [
+      trackedLists: [
         {
           src: "https://randomuser.me/api/portraits/med/women/3.jpg",
-          name: "Darlene Black",
-          jobTitle: "HR-manager, 10 000 connection",
-          date: "26 aug, monday",
+          name: "UX/UI Designer",
+          jobTitle: "Upwork",
+          date: "",
           icon: "",
           isRing: false,
         },
         {
           src: "https://randomuser.me/api/portraits/med/women/3.jpg",
-          name: "Theresa Steward",
-          jobTitle: "iOS developer",
-          date: "Yesterday, 12:03",
-          icon: "",
-          isRing: false,
-        },
-        {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
-          name: "Brandon Wilson",
-          jobTitle: "Senior UX designer",
-          date: "25 aug, sunday",
-          icon: "",
-          isRing: false,
-        },
-        {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
-          name: "Kyle Fisher",
-          jobTitle: "Product designer",
-          date: "26 aug, monday",
+          name: "Product designer",
+          jobTitle: "Facebook",
+          date: "",
           icon: "",
           isRing: false,
         },

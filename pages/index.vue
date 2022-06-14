@@ -1,7 +1,6 @@
 <template>
   <v-row justify="center" align="start">
     <v-col cols="12" sm="8" md="8">
-      <post-card class="mb-4"></post-card>
       <v-card class="logo d-flex justify-center">
         <v-img src="https://picsum.photos/350/165?random" height="200px">
           <v-card-title>
@@ -135,17 +134,11 @@
         <div class="text-h6 font-weight-bold mb-4">Education</div>
         <public-list :list="educationLists"></public-list>
       </v-card>
-
-      <!-- job -->
-      <div class="mb-4">
-        <public-list :list="jobLists" :isJobPage="true"></public-list>
-      </div>
       <div class="mb-4">
         <chat-list></chat-list>
       </div>
     </v-col>
     <v-col cols="12" sm="4" md="4">
-      <sm-list :list="searchList" :isSearchPage="true"></sm-list>
       <sm-list :list="visitorList"></sm-list>
       <v-card class="pa-4 mb-4">
         <div class="text-subtitle-1 text-center font-weight-bold mb-4">
@@ -186,7 +179,6 @@ import ScoreList from "@/components/lists/ScoreList";
 import BtnShow from "@/components/BtnShow";
 import SideList from "@/components/lists/SideList";
 import ChatList from "@/components/lists/ChatList";
-import PostCard from "@/components/cards/PostCard";
 import SmList from "@/components/lists/SmList";
 export default {
   name: "IndexPage",
@@ -198,7 +190,6 @@ export default {
     BtnShow,
     SideList,
     ChatList,
-    PostCard,
     SmList,
   },
   data() {
@@ -414,52 +405,6 @@ export default {
           intro: "Additional English classes and UX profile courses​.",
         },
       ],
-      jobLists: [
-        {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-          connections: "",
-          workRange: "Upwork",
-          workRangeNote: "Remote only",
-          workDate: "",
-          workDuring: "",
-          title: "UX/UI designer",
-          intro:
-            "On Upwork you'll find a range of top freelancers and agencies, from developers and development agencies to designers and creative agencies, copywriters",
-        },
-        {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-          connections: "",
-          workRange: "Facebook",
-          workRangeNote: "CA, USA",
-          workDate: "",
-          workDuring: "",
-          title: "Product designer",
-          intro:
-            "Founded in 2004, Facebook's mission is to give people the power to build community and bring the world closer together. People use our products to stay.",
-        },
-        {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-          connections: "",
-          workRange: "Google",
-          workRangeNote: "International",
-          workDate: "",
-          workDuring: "",
-          title: "Part-time UX designer",
-          intro:
-            "Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking.",
-        },
-        {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-          connections: "",
-          workRange: "LinkedIn",
-          workRangeNote: "CA, USA",
-          workDate: "",
-          workDuring: "",
-          title: "Web designer",
-          intro:
-            "LinkedIn, the world's largest professional network. The mission of LinkedIn is simple: connect the world's professional.",
-        },
-      ],
       scoreLists: [
         {
           score: 367,
@@ -510,32 +455,6 @@ export default {
           date: "26 aug, monday",
           icon: "",
           isRing: false,
-        },
-      ],
-      searchList: [
-        {
-          src: "",
-          name: "UX/UI designer <span class='green--text text--accent-4'>+240</span>",
-          jobTitle: "Remote",
-          date: "",
-          icon: "mdi-bell-off",
-          isRing: true,
-        },
-        {
-          src: "",
-          name: "Web designer",
-          jobTitle: "Los-Angeles, CA",
-          date: "",
-          icon: "mdi-bell-outline",
-          isRing: true,
-        },
-        {
-          src: "",
-          name: "Graphic designer",
-          jobTitle: "Malaysia, Kuala Lumpur",
-          date: "",
-          icon: "mdi-bell-outline",
-          isRing: true,
         },
       ],
     };

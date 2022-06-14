@@ -1,7 +1,14 @@
 <template>
   <v-row justify="center" align="start">
     <v-col cols="12" sm="8" md="8">
-      <post-card class="mb-6"></post-card>
+      <post-card class="mb-6">
+        <v-card-title class="text-uppercase" slot="title"
+          >new post</v-card-title
+        >
+        <v-card-text class="text-body-2" style="color: #bdbdbd" slot="text">
+          <span style="letter-spacing: 0.15em"> What’s on your mind? </span>
+        </v-card-text>
+      </post-card>
       <divider>
         <template slot="txt">SORT BY:</template>
         <span class="blue--text text--darken-2" slot="txt2"> trending</span>
@@ -66,7 +73,7 @@
         <tag-list></tag-list>
       </v-card>
       <v-card class="pa-4 mb-4">
-        <div class="text-subtitle-1 text-left font-weight-bold mb-4">
+        <div class="text-subtitle-1 text-left font-weight-bold text-uppercase mb-4">
           Trending articles
         </div>
         <project-list

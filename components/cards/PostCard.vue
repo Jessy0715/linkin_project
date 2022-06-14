@@ -1,32 +1,50 @@
 <template>
   <v-card>
-    <v-card-title class="text-uppercase">new post</v-card-title>
+    <slot name="title">預設 title</slot>
     <div class="px-4">
       <v-divider></v-divider>
     </div>
     <div class="d-flex align-center">
-      <v-card-text class="text-body-2" style="color: #bdbdbd">
-        <span style="letter-spacing: 0.15em"> What’s on your mind? </span>
-      </v-card-text>
+      <slot name="text">預設 text</slot>
       <div class="d-flex">
-        <v-btn
-          class="mr-4 pa-0"
-          color="primary"
-          v-for="(item, idx) in iconGroup"
-          :key="idx"
-          :disabled="item.isDisabled"
-          min-width="25"
-          max-height="25"
-        >
-          <v-icon size="20"> {{ item.name }} </v-icon>
-        </v-btn>
+        <template v-if="!isJobPage">
+          <v-btn
+            class="mr-4 pa-0"
+            color="primary"
+            v-for="(item, idx) in iconGroup"
+            :key="idx"
+            :disabled="item.isDisabled"
+            min-width="25"
+            max-height="25"
+          >
+            <v-icon size="20"> {{ item.name }} </v-icon>
+          </v-btn>
+        </template>
+        <template v-if="isJobPage">
+          <v-btn
+            class="mr-4 pa-0"
+            color="primary"
+            v-for="(item, idx) in jobIconGroup"
+            :key="idx"
+            :disabled="item.isDisabled"
+            min-width="25"
+            max-height="25"
+          >
+            <v-icon size="20"> {{ item.name }} </v-icon>
+          </v-btn>
+        </template>
       </div>
     </div>
   </v-card>
 </template>
 <script>
 export default {
-  name: "",
+  name: "PostCard",
+  props: {
+    isJobPage: {
+      type: Boolean,
+    },
+  },
   data() {
     return {
       iconGroup: [
@@ -38,6 +56,16 @@ export default {
           name: "mdi-account",
           isDisabled: false,
         },
+        {
+          name: "mdi-flag",
+          isDisabled: true,
+        },
+        {
+          name: "mdi-application",
+          isDisabled: true,
+        },
+      ],
+      jobIconGroup: [
         {
           name: "mdi-flag",
           isDisabled: true,

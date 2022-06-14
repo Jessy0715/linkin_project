@@ -1,7 +1,7 @@
 <template>
   <v-list>
-    <template v-for="(item, idx) in chatLists">
-      <v-list-item :key="idx" style="border-radius: 5px;background: #eee;margin-bottom: 16px;">
+    <template v-for="(item, idx) in list">
+      <v-list-item :key="idx" style="border-radius: 5px;margin-bottom: 16px;">
         <section class="avatars-group py-3 stacked">
           <div
             v-for="avatar in avatarsStackedLimited"
@@ -31,27 +31,17 @@
 <script>
 import ImgGroup from "@/components/ImgGroup";
 export default {
-  name: "",
+  name: "ChatList",
   components: {
     ImgGroup,
   },
+  props: {
+    list: {
+      type: Array
+    }
+  },
   data() {
     return {
-      chatLists: [
-        {
-          title: "You appeared in 9 searches this week",
-          time: "3 hours",
-        },
-        {
-          title: "Audrey Alexander and 10 others viewed your profile",
-          time: "9 hours",
-        },
-        {
-          title:
-            "Eduardo Russel and 4 others liked your post 1,000 connections! My network growth, so many",
-          time: "12 hours",
-        },
-      ],
       stackedLimit: 3,
       avatars: [
         {

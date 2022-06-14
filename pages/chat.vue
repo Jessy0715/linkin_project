@@ -1,14 +1,20 @@
 <template>
   <v-row justify="center" align="start">
-    <v-col cols="12" sm="8" md="8"> chat </v-col>
-    <v-col cols="12" sm="4" md="4"></v-col>
+    <v-col cols="12" sm="4" md="4">
+
+    </v-col>
+    <v-col cols="12" sm="8" md="8"></v-col>
   </v-row>
 </template>
 <script>
 export default {
-  name: "",
+  name: "chat",
+  components: {
+  },
   data() {
-    return {};
+    return {
+
+    };
   },
 };
 </script>

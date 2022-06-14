@@ -134,9 +134,6 @@
         <div class="text-h6 font-weight-bold mb-4">Education</div>
         <public-list :list="educationLists"></public-list>
       </v-card>
-      <div class="mb-4">
-        <chat-list></chat-list>
-      </div>
     </v-col>
     <v-col cols="12" sm="4" md="4">
       <sm-list :list="visitorList"></sm-list>
@@ -159,7 +156,6 @@
       <v-card class="mb-4">
         <btn-show></btn-show>
       </v-card>
-      <side-list class="mb-4" :list="sideLists2" :isNote="true"></side-list>
     </v-col>
   </v-row>
 </template>
@@ -177,8 +173,6 @@ import PublicList from "@/components/lists/PublicList";
 import ImgGroup from "@/components/ImgGroup";
 import ScoreList from "@/components/lists/ScoreList";
 import BtnShow from "@/components/BtnShow";
-import SideList from "@/components/lists/SideList";
-import ChatList from "@/components/lists/ChatList";
 import SmList from "@/components/lists/SmList";
 export default {
   name: "IndexPage",
@@ -188,8 +182,6 @@ export default {
     PublicList,
     ScoreList,
     BtnShow,
-    SideList,
-    ChatList,
     SmList,
   },
   data() {

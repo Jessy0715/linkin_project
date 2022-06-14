@@ -1,9 +1,9 @@
 <template>
-  <v-list two-line>
+  <v-list two-line style="background: #fcfefd">
     <template v-for="(item, idx) in list">
       <v-list-item
         :key="idx"
-        style="border-radius: 5px; background: #eee; margin-bottom: 16px"
+        style="border-radius: 5px; background: #fff; border: 1px solid #eee;margin-bottom: 16px"
       >
         <v-list-item-avatar v-if="!isSearchPage">
           <v-img :src="item.src"></v-img>

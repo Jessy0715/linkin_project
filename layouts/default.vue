@@ -57,25 +57,31 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar> -->
-    <v-app-bar class="white">
-      <v-icon class="ml-2 mr-6" x-large color="blue darken-2"
-        >mdi-linkedin</v-icon
-      >
-      <v-divider vertical></v-divider>
-      <div
-        v-for="(item, idx) in navbarIcons"
-        :key="idx"
-        class="d-flex flex-wrap flex-column align-center mx-8"
-      >
-        <v-badge
-          :content="item.message"
-          :value="item.message"
-          color="orange lighten-2"
-          overlap
+    <v-app-bar class="white" height="64" min-height="64">
+      <NuxtLink to="/" style="text-decoration: none;">
+        <v-icon class="ml-2 mr-6" x-large color="blue darken-2"
+          >mdi-linkedin</v-icon
         >
-          <v-icon color="black" size="20px">{{ item.icon }}</v-icon>
-        </v-badge>
-        <small>{{ item.title }}</small>
+      </NuxtLink>
+      <v-divider vertical></v-divider>
+      <div v-for="(item, idx) in navbarIcons" :key="idx">
+        <div>
+          <NuxtLink
+            :to="item.to"
+            class="d-flex flex-wrap flex-column align-center mx-8"
+            style="text-decoration: none; color: #000"
+          >
+            <v-badge
+              :content="item.message"
+              :value="item.message"
+              color="orange lighten-2"
+              overlap
+            >
+              <v-icon color="black" size="20px">{{ item.icon }}</v-icon>
+            </v-badge>
+            <small> {{ item.title }}</small>
+          </NuxtLink>
+        </div>
       </div>
       <v-divider vertical></v-divider>
       <div style="height: 100%; flex-grow: 1" class="pa-2">
@@ -176,17 +182,19 @@
       <div class="d-flex justify-space-between align-center pa-3">
         <div class="font-weight-bold">More from LinkedIn</div>
         <div
-        class="
-          d-flex
-          flex-wrap flex-column
-          align-center
-          blue--text
-          text--darken-2
-        "
-        style="cursor: pointer"
-      >
-        <v-icon color="blue darken-2" @click.stop="closeDrawer">mdi-close</v-icon>
-      </div>
+          class="
+            d-flex
+            flex-wrap flex-column
+            align-center
+            blue--text
+            text--darken-2
+          "
+          style="cursor: pointer"
+        >
+          <v-icon color="blue darken-2" @click.stop="closeDrawer"
+            >mdi-close</v-icon
+          >
+        </div>
       </div>
       <v-divider></v-divider>
       <section class="px-4">
@@ -335,26 +343,31 @@ export default {
           icon: "mdi-cast",
           title: "FEED",
           message: 0,
+          to: "/feed",
         },
         {
           icon: "mdi-account-multiple",
           title: "NETWORK",
           message: 0,
+          to: "/network",
         },
         {
           icon: "mdi-qqchat",
           title: "JOBS",
           message: 0,
+          to: "/jobs",
         },
         {
           icon: "mdi-sd",
           title: "CHAT",
           message: 1,
+          to: "/chat",
         },
         {
           icon: "mdi-star-outline",
           title: "NOTICES",
           message: 0,
+          to: "/notices",
         },
       ],
       items: [
@@ -519,7 +532,7 @@ export default {
     },
     closeDrawer() {
       this.rightDrawer = false;
-    }
+    },
   },
 };
 </script>
@@ -530,9 +543,9 @@ ul {
 .v-list {
   padding: 0 16px !important;
 }
-::v-deep .v-list .v-list-item {
-  border: 1px solid #eee !important;
-  width: 95% !important;
-  margin: 0 auto 16px auto !important;
-}
+// ::v-deep .v-list .v-list-item {
+//   border: 1px solid #eee !important;
+//   width: 95% !important;
+//   margin: 0 auto 16px auto !important;
+// }
 </style>

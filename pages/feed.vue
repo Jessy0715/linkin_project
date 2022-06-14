@@ -2,7 +2,10 @@
   <v-row justify="center" align="start">
     <v-col cols="12" sm="8" md="8">
       <post-card class="mb-6"></post-card>
-      <divider></divider>
+      <divider>
+        <template slot="txt">SORT BY:</template>
+        <span class="blue--text text--darken-2" slot="txt2"> trending</span>
+      </divider>
       <msg-card v-for="(item, idx) in slotArray" :key="idx" class="mb-6">
         <small slot="state" v-html="item.state"></small>
         <v-img
@@ -86,7 +89,7 @@ import SmList from "@/components/lists/SmList";
 import TagList from "@/components/lists/TagList";
 import Divider from "@/components/Divider";
 export default {
-  name: "",
+  name: "feed",
   components: {
     PostCard,
     MsgCard,
@@ -96,7 +99,7 @@ export default {
     BtnShow,
     SmList,
     TagList,
-    Divider
+    Divider,
   },
   data() {
     return {
@@ -210,5 +213,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
 </style>

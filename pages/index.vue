@@ -52,12 +52,11 @@
           </v-card-text>
         </div>
       </v-card>
-      <v-tabs fixed-tabs v-model="currentItem" class="mb-4">
-        <!-- <v-tabs-slider></v-tabs-slider> -->
+      <v-tabs fixed-tabs v-model="currentTab" class="mb-4">
         <v-tab
           :style="
-            currentItem == idx
-              ? 'color: white; background-color: #1976D2; border-top-left-radius: 10px; border-top-right-radius: 10px;'
+            currentTab == idx
+              ? 'color: white; background-color: #1976D2; border-top-left-radius: 8px; border-top-right-radius: 8px;'
               : ''
           "
           v-for="(item, idx) in tabs"
@@ -141,10 +140,6 @@
       <div class="mb-4">
         <public-list :list="jobLists" :isJobPage="true"></public-list>
       </div>
-      <!-- network -->
-      <div class="mb-4">
-        <public-list :list="networkLists" :isNetworkPage="true"></public-list>
-      </div>
       <div class="mb-4">
         <chat-list></chat-list>
       </div>
@@ -171,7 +166,6 @@
       <v-card class="mb-4">
         <btn-show></btn-show>
       </v-card>
-      <side-list class="mb-4" :list="sideLists"></side-list>
       <side-list class="mb-4" :list="sideLists2" :isNote="true"></side-list>
     </v-col>
   </v-row>
@@ -209,7 +203,7 @@ export default {
   },
   data() {
     return {
-      currentItem: "",
+      currentTab: "",
       tabs: ["Profile", "Activity & interests", "Articles (3)"],
       imgSet: [
         {
@@ -466,28 +460,6 @@ export default {
             "LinkedIn, the world's largest professional network. The mission of LinkedIn is simple: connect the world's professional.",
         },
       ],
-      networkLists: [
-        {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-          connections: "623 connections",
-          workRange: "Senior UX designer",
-          workRangeNote: "",
-          workDate: "",
-          workDuring: "",
-          title: "Brandon Wilson",
-          intro: "",
-        },
-        {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-          connections: "481 connections",
-          workRange: "iOS developer",
-          workRangeNote: "",
-          workDate: "",
-          workDuring: "",
-          title: "Theresa Steward",
-          intro: "",
-        },
-      ],
       scoreLists: [
         {
           score: 367,
@@ -501,14 +473,6 @@ export default {
           score: 9,
           text: "search appearances",
         },
-      ],
-      sideLists: [
-        { text: "Connections", num: 1038, icon: "mdi-clock", circle: false },
-        { text: "Invitations", num: 2, icon: "mdi-account", circle: true },
-        { text: "Teammates", num: 10, icon: "mdi-flag", circle: false },
-        { text: "groups", num: 6, icon: "mdi-clock", circle: false },
-        { text: "pages", num: 28, icon: "mdi-account", circle: false },
-        { text: "hashtags", num: 8, icon: "mdi-flag", circle: false },
       ],
       sideLists2: [
         { text: "Notifications", num: null, icon: "", circle: false },

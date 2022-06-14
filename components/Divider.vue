@@ -1,8 +1,8 @@
 <template>
   <div class="separator my-8">
     <div class="separator__text text-uppercase font-weight-medium px-8">
-      Sort by:
-      <span class="blue--text text--darken-2"> trending</span>
+      <slot name="txt">預設文字1</slot>
+      <slot name="txt2">預設文字2</slot>
     </div>
   </div>
 </template>

@@ -15,7 +15,7 @@
           isFeedPage
             ? 'background: #e8f1f8; margin-bottom: 16px;'
             : isJobPage || isNetworkPage
-            ? 'background: #eee; margin-bottom: 16px;'
+            ? 'background: #fff; margin-bottom: 16px;'
             : 'background: transparent;'"
       >
         <v-list-item-avatar :style="isFeedPage|| isJobPage || isNetworkPage ? 'margin-top: auto; margin-bottom: auto' : ''">

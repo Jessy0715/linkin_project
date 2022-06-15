@@ -55,7 +55,7 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app class="d-block d-md-none">
       <v-app-bar-nav-icon @click.stop="leftDrawer = !leftDrawer" />
-      <v-btn icon>
+      <v-btn icon @click="checkAppear">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
       <v-spacer />
@@ -67,7 +67,7 @@
     <v-navigation-drawer
       v-model="rightDrawer"
       :right="right"
-      :width="$vuetify.breakpoint.lg ?'370':'100%'"
+      :width="$vuetify.breakpoint.lg ? '370' : '100%'"
       temporary
       fixed
     >
@@ -198,7 +198,7 @@
       </div>
       <v-divider vertical></v-divider>
       <div style="height: 100%; flex-grow: 1" class="pa-2">
-        <auto-complete></auto-complete>
+        <auto-complete :show="true"></auto-complete>
       </div>
       <v-divider vertical></v-divider>
       <v-avatar style="flex-shrink: 2" min-width="36" right class="mx-4">
@@ -225,7 +225,7 @@
       </div>
       <v-divider vertical></v-divider>
     </v-app-bar>
-    <v-main class="pt-14 pt-md-0 pl-md-0">
+    <v-main class="pt-14 pt-md-0 pl-md-0 mb-6">
       <v-container>
         <Nuxt />
       </v-container>
@@ -233,7 +233,14 @@
     <v-footer
       :absolute="!fixed"
       app
-      class="d-flex flex-column flex-md-row justify-md-space-around align-md-start pa-4"
+      class="
+        d-flex
+        flex-column flex-md-row
+        justify-md-space-around
+        align-md-start
+        pa-4
+        mt-4
+      "
     >
       <div class="d-flex flex-column justify-center align-center mb-6 mb-md-0">
         <v-icon x-large color="blue darken-2">mdi-linkedin </v-icon>
@@ -241,10 +248,20 @@
           Linked<span class="blue--text">In</span>
         </div>
       </div>
-      <div class="mb-6 mb-md-0" :class="$vuetify.breakpoint.lg ?'':'d-flex flex-column flex-md-row'"
+      <div
+        class="mb-6 mb-md-0"
+        :class="$vuetify.breakpoint.lg ? '' : 'd-flex flex-column flex-md-row'"
       >
-        <div class="text-subtitle-2 mb-4" :class="$vuetify.breakpoint.lg ?' text-left':' text-center'">Navigation</div>
-        <div class="d-block d-md-flex" :class="$vuetify.breakpoint.lg ? '':' text-center'">
+        <div
+          class="text-subtitle-2 mb-4"
+          :class="$vuetify.breakpoint.lg ? ' text-left' : ' text-center'"
+        >
+          Navigation
+        </div>
+        <div
+          class="d-block d-md-flex"
+          :class="$vuetify.breakpoint.lg ? '' : ' text-center'"
+        >
           <ul v-for="(item, idx) in footerList" :key="idx" class="pl-0 pl-md-6">
             <li
               v-for="(ele, id) in item.content"
@@ -270,7 +287,12 @@
         </div>
       </div>
       <div class="mb-6 mb-md-0">
-        <div class="text-subtitle-2 mb-4" :class="$vuetify.breakpoint.lg ?' text-left':' text-center'">Language</div>
+        <div
+          class="text-subtitle-2 mb-4"
+          :class="$vuetify.breakpoint.lg ? ' text-left' : ' text-center'"
+        >
+          Language
+        </div>
         <v-select
           solo
           :items="languageItems"
@@ -480,6 +502,9 @@ export default {
     },
     closeDrawer() {
       this.rightDrawer = false;
+    },
+    checkAppear() {
+      this.$store.dispatch("handAppear");
     },
   },
 };

@@ -73,7 +73,9 @@
         <tag-list></tag-list>
       </v-card>
       <v-card class="pa-4 mb-4">
-        <div class="text-subtitle-1 text-left font-weight-bold text-uppercase mb-4">
+        <div
+          class="text-subtitle-1 text-left font-weight-bold text-uppercase mb-4"
+        >
           Trending articles
         </div>
         <project-list
@@ -216,6 +218,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    showText() {
+      console.log("text");
+    },
   },
 };
 </script>

@@ -1,6 +1,9 @@
 <template>
   <v-row justify="center" align="start">
     <v-col cols="12" sm="8" md="8">
+      <div class="d-block d-md-none">
+        <auto-complete :show="getVal"></auto-complete>
+      </div>
       <v-card class="logo d-flex justify-center">
         <v-img src="https://picsum.photos/350/165?random" height="200px">
           <v-card-title>
@@ -56,9 +59,19 @@
               (iOS & android) and creative projects. Open to offers.
             </p>
             <div
-              class="d-flex flex-column flex-md-row justify-center justify-md-start align-center"
+              class="
+                d-flex
+                flex-column flex-md-row
+                justify-center justify-md-start
+                align-center
+              "
             >
-              <v-btn color="primary" nuxt to="/inspire" class="mr-md-3 mb-4 mb-md-0">
+              <v-btn
+                color="primary"
+                nuxt
+                to="/inspire"
+                class="mr-md-3 mb-4 mb-md-0"
+              >
                 <span class="white--text">Contact info</span></v-btn
               >
               <v-btn outlined color="blue darken-2"> 1,043 connections </v-btn>
@@ -196,6 +209,8 @@ import PublicList from "@/components/lists/PublicList";
 import ImgGroup from "@/components/ImgGroup";
 import ScoreList from "@/components/lists/ScoreList";
 import SmList from "@/components/lists/SmList";
+import AutoComplete from "@/components/AutoComplete";
+
 export default {
   name: "IndexPage",
   components: {
@@ -204,10 +219,12 @@ export default {
     PublicList,
     ScoreList,
     SmList,
+    AutoComplete,
   },
   data() {
     return {
       currentTab: "",
+      showUp: false,
       tabs: ["Profile", "Activity & interests", "Articles (3)"],
       imgSet: [
         {
@@ -467,17 +484,16 @@ export default {
         ? this.avatarsSorted.slice(0, this.stackedLimit)
         : null;
     },
+    getVal() {
+      return this.$store.getters.getAppear;
+    },
   },
   methods: {
-    showText() {
-      console.log("text");
-    },
     remove(item) {
       const index = this.friends.indexOf(item.name);
       if (index >= 0) this.friends.splice(index, 1);
     },
   },
-  mounted() {},
 };
 </script>
 <style lang="scss" scoped>

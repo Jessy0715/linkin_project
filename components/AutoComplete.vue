@@ -1,17 +1,17 @@
 <template>
-  <!-- <v-app dark> -->
-    <v-autocomplete
-      v-model="friends"
-      :items="people"
-      color="blue darken-2"
-      item-text="name"
-      item-value="name"
-      placeholder="Search"
-      append-outer-icon="mdi-magnify"
-      hide-no-data
-    >
-      <template v-slot:selection="data">
-        <!-- <v-chip
+  <v-autocomplete
+    v-show="show"
+    v-model="friends"
+    :items="people"
+    color="blue darken-2"
+    item-text="name"
+    item-value="name"
+    placeholder="Search"
+    append-outer-icon="mdi-magnify"
+    hide-no-data
+  >
+    <template v-slot:selection="data">
+      <!-- <v-chip
         v-bind="data.attrs"
         :input-value="data.selected"
         close
@@ -23,31 +23,29 @@
         </v-avatar>
         {{ data.item.name }}
       </v-chip> -->
-        {{ data.item.name }}
+      {{ data.item.name }}
+    </template>
+    <template v-slot:item="data">
+      <template v-if="typeof data.item !== 'object'">
+        <v-list-item-content v-text="data.item"></v-list-item-content>
       </template>
-      <template v-slot:item="data">
-        <template v-if="typeof data.item !== 'object'">
-          <v-list-item-content v-text="data.item"></v-list-item-content>
-        </template>
-        <template v-else>
-          <v-list-item-avatar>
-            <img :src="data.item.avatar" />
-          </v-list-item-avatar>
-          <v-list-item-content>
-            <v-list-item-title v-html="data.item.name"></v-list-item-title>
-            <v-list-item-subtitle
-              v-html="data.item.group"
-            ></v-list-item-subtitle>
-          </v-list-item-content>
-          <v-list-item-action>
-            <v-btn icon color="pink">
-              <v-icon>mdi-heart</v-icon>
-            </v-btn>
-          </v-list-item-action>
-        </template>
+      <template v-else>
+        <v-list-item-avatar>
+          <img :src="data.item.avatar" />
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title v-html="data.item.name"></v-list-item-title>
+          <v-list-item-subtitle v-html="data.item.group"></v-list-item-subtitle>
+        </v-list-item-content>
+        <v-list-item-action>
+          <v-btn icon color="pink">
+            <v-icon>mdi-heart</v-icon>
+          </v-btn>
+        </v-list-item-action>
       </template>
-    </v-autocomplete>
-    <!-- <v-text-field
+    </template>
+  </v-autocomplete>
+  <!-- <v-text-field
     flat
     outlined
     height="100%"
@@ -55,7 +53,6 @@
     prepend-inner-icon="mdi-magnify"
   >
   </v-text-field> -->
-  <!-- </v-app> -->
 </template>
 <script>
 const srcs = {
@@ -67,7 +64,12 @@ const srcs = {
 };
 
 export default {
-  name: "",
+  name: "AutoComplete",
+  props: {
+    show: {
+      type: Boolean
+    }
+  },
   data() {
     return {
       friends: "",

@@ -1,19 +1,48 @@
 <template>
   <v-app dark>
-    <!-- <v-navigation-drawer
-      v-model="drawer"
+    <v-navigation-drawer
+      v-model="leftDrawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
       fixed
       app
+      class="d-block d-md-none"
     >
+      <div class="d-flex flex-column align-center py-4">
+        <v-avatar style="flex-shrink: 2" min-width="36" right class="mx-4">
+          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+        </v-avatar>
+        <div>
+          D. Kargaev
+          <v-icon small color="amber darken-1">mdi-linkedin </v-icon>
+        </div>
+        <div>
+          <span class="grey--text"> 367 views today</span>
+          <span class="green--text text--accent-4">+32</span>
+          <v-icon small color="green accent-4">mdi-arrow-top-right</v-icon>
+        </div>
+      </div>
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
+          to="/"
+          active-class="blue darken-2"
+          exact-active-class="white--text"
+        >
+          <v-list-item-action>
+            <v-icon>mdi-hexagon-outline</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>INDEX</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item
+          v-for="(item, i) in navbarIcons"
           :key="i"
           :to="item.to"
           router
           exact
+          active-class="blue darken-2"
+          exact-active-class="white--text"
         >
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
@@ -23,113 +52,17 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer> -->
-    <!-- <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+    </v-navigation-drawer>
+    <v-app-bar :clipped-left="clipped" fixed app class="d-block d-md-none">
+      <v-app-bar-nav-icon @click.stop="leftDrawer = !leftDrawer" />
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
+      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
+        <v-icon>mdi-dots-horizontal</v-icon>
       </v-btn>
-    </v-app-bar> -->
-    <v-app-bar class="white">
-      <div @click="gotoIndex" style="cursor: pointer">
-        <v-icon class="ml-2 mr-6" x-large color="blue darken-2"
-          >mdi-linkedin</v-icon
-        >
-      </div>
-      <v-divider vertical></v-divider>
-      <div
-        class="d-flex align-center"
-        v-for="(item, idx) in navbarIcons"
-        :key="idx"
-        style="height: 100%"
-        :style="item.active ? 'border-bottom: 2px solid #1976D2' : ''"
-        @click="checkTab(item)"
-      >
-        <div>
-          <NuxtLink
-            :to="item.to"
-            class="d-flex flex-wrap flex-column align-center mx-8"
-            style="text-decoration: none; color: #000"
-          >
-            <v-badge
-              :content="item.message"
-              :value="item.message"
-              color="orange lighten-2"
-              overlap
-            >
-              <v-icon
-                :color="item.active? 'blue darken-2' : ''"
-                size="20px"
-                >{{ item.icon }}</v-icon
-              >
-            </v-badge>
-            <small :class="item.active? 'blue--text text--darken-2' : ''">
-              {{ item.title }}</small
-            >
-          </NuxtLink>
-        </div>
-      </div>
-      <v-divider vertical></v-divider>
-      <div style="height: 100%; flex-grow: 1" class="pa-2">
-        <auto-complete></auto-complete>
-      </div>
-      <v-divider vertical></v-divider>
-      <v-avatar style="flex-shrink: 2" min-width="36" right class="mx-4">
-        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-      </v-avatar>
-      <div style="flex-grow: 1">
-        <div>D. Kargaev &nbsp; <span class="grey--text">YOU</span></div>
-        <div>
-          <span class="grey--text"> 367 views today</span>
-          <span class="green--text text--accent-4">+32</span>
-          <v-icon small color="green accent-4">mdi-arrow-top-right</v-icon>
-        </div>
-      </div>
-      <v-divider vertical></v-divider>
-      <div style="flex-grow: 1">
-        <div
-          class="d-flex flex-wrap flex-column align-center"
-          style="cursor: pointer"
-          @click.stop="rightDrawer = !rightDrawer"
-        >
-          <v-icon>mdi-dots-horizontal</v-icon>
-          <small>OTHER</small>
-        </div>
-      </div>
-      <v-divider vertical></v-divider>
     </v-app-bar>
-    <v-main>
-      <v-container>
-        <Nuxt />
-      </v-container>
-    </v-main>
 
     <v-navigation-drawer
       v-model="rightDrawer"
@@ -226,7 +159,77 @@
         </v-list>
       </section>
     </v-navigation-drawer>
-
+    <v-app-bar class="white d-none d-md-block">
+      <div @click="gotoIndex" style="cursor: pointer">
+        <v-icon class="ml-2 mr-6" x-large color="blue darken-2"
+          >mdi-linkedin</v-icon
+        >
+      </div>
+      <v-divider vertical></v-divider>
+      <div
+        class="d-flex align-center"
+        v-for="(item, idx) in navbarIcons"
+        :key="idx"
+        style="height: 100%"
+        :style="item.active ? 'border-bottom: 2px solid #1976D2' : ''"
+        @click="checkTab(item)"
+      >
+        <div>
+          <NuxtLink
+            :to="item.to"
+            class="d-flex flex-wrap flex-column align-center mx-8"
+            style="text-decoration: none; color: #000"
+          >
+            <v-badge
+              :content="item.message"
+              :value="item.message"
+              color="orange lighten-2"
+              overlap
+            >
+              <v-icon :color="item.active ? 'blue darken-2' : ''" size="20px">{{
+                item.icon
+              }}</v-icon>
+            </v-badge>
+            <small :class="item.active ? 'blue--text text--darken-2' : ''">
+              {{ item.title }}</small
+            >
+          </NuxtLink>
+        </div>
+      </div>
+      <v-divider vertical></v-divider>
+      <div style="height: 100%; flex-grow: 1" class="pa-2">
+        <auto-complete></auto-complete>
+      </div>
+      <v-divider vertical></v-divider>
+      <v-avatar style="flex-shrink: 2" min-width="36" right class="mx-4">
+        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+      </v-avatar>
+      <div style="flex-grow: 1">
+        <div>D. Kargaev &nbsp; <span class="grey--text">YOU</span></div>
+        <div>
+          <span class="grey--text"> 367 views today</span>
+          <span class="green--text text--accent-4">+32</span>
+          <v-icon small color="green accent-4">mdi-arrow-top-right</v-icon>
+        </div>
+      </div>
+      <v-divider vertical></v-divider>
+      <div style="flex-grow: 1">
+        <div
+          class="d-flex flex-wrap flex-column align-center"
+          style="cursor: pointer"
+          @click.stop="rightDrawer = !rightDrawer"
+        >
+          <v-icon>mdi-dots-horizontal</v-icon>
+          <small>OTHER</small>
+        </div>
+      </div>
+      <v-divider vertical></v-divider>
+    </v-app-bar>
+    <v-main>
+      <v-container>
+        <Nuxt />
+      </v-container>
+    </v-main>
     <v-footer
       :absolute="!fixed"
       app
@@ -297,8 +300,8 @@ export default {
   },
   data() {
     return {
-      // clipped: false,
-      // drawer: false,
+      clipped: false,
+      leftDrawer: false,
       fixed: false,
       navbarIcons: [
         {
@@ -306,42 +309,42 @@ export default {
           title: "FEED",
           message: 0,
           to: "/feed",
-          active: false
+          active: false,
         },
         {
           icon: "mdi-account-multiple",
           title: "NETWORK",
           message: 1,
           to: "/network",
-          active: false
+          active: false,
         },
         {
           icon: "mdi-qqchat",
           title: "JOBS",
           message: 0,
           to: "/jobs",
-          active: false
+          active: false,
         },
         {
           icon: "mdi-star-outline",
           title: "NOTICES",
           message: 0,
           to: "/notices",
-          active: false
+          active: false,
         },
       ],
-      // items: [
-      //   {
-      //     icon: "mdi-apps",
-      //     title: "Welcome",
-      //     to: "/",
-      //   },
-      //   {
-      //     icon: "mdi-chart-bubble",
-      //     title: "Inspire",
-      //     to: "/inspire",
-      //   },
-      // ],
+      items: [
+        {
+          icon: "mdi-apps",
+          title: "Welcome",
+          to: "/",
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Inspire",
+          to: "/inspire",
+        },
+      ],
       footerList: [
         {
           content: [
@@ -394,7 +397,6 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Vuetify.js",
       demandLists: [
         {
           child: [
@@ -460,9 +462,9 @@ export default {
   methods: {
     gotoIndex() {
       this.navbarIcons.forEach((ele) => {
-        ele.active = false
-      })
-      this.$router.push('/')
+        ele.active = false;
+      });
+      this.$router.push("/");
     },
     checkTab(item) {
       this.navbarIcons.forEach((ele) => {

@@ -57,14 +57,21 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar> -->
-    <v-app-bar class="white" height="64" min-height="64">
-      <NuxtLink to="/" style="text-decoration: none;">
+    <v-app-bar class="white">
+      <div @click="gotoIndex" style="cursor: pointer">
         <v-icon class="ml-2 mr-6" x-large color="blue darken-2"
           >mdi-linkedin</v-icon
         >
-      </NuxtLink>
+      </div>
       <v-divider vertical></v-divider>
-      <div v-for="(item, idx) in navbarIcons" :key="idx">
+      <div
+        class="d-flex align-center"
+        v-for="(item, idx) in navbarIcons"
+        :key="idx"
+        style="height: 100%"
+        :style="item.active ? 'border-bottom: 2px solid #1976D2' : ''"
+        @click="checkTab(item)"
+      >
         <div>
           <NuxtLink
             :to="item.to"
@@ -77,69 +84,21 @@
               color="orange lighten-2"
               overlap
             >
-              <v-icon color="black" size="20px">{{ item.icon }}</v-icon>
+              <v-icon
+                :color="item.active? 'blue darken-2' : ''"
+                size="20px"
+                >{{ item.icon }}</v-icon
+              >
             </v-badge>
-            <small> {{ item.title }}</small>
+            <small :class="item.active? 'blue--text text--darken-2' : ''">
+              {{ item.title }}</small
+            >
           </NuxtLink>
         </div>
       </div>
       <v-divider vertical></v-divider>
       <div style="height: 100%; flex-grow: 1" class="pa-2">
-        <v-autocomplete
-          v-model="friends"
-          :items="people"
-          color="blue darken-2"
-          item-text="name"
-          item-value="name"
-          placeholder="Search"
-          append-outer-icon="mdi-magnify"
-          hide-no-data
-        >
-          <template v-slot:selection="data">
-            <!-- <v-chip
-              v-bind="data.attrs"
-              :input-value="data.selected"
-              close
-              @click="data.select"
-              @click:close="remove(data.item)"
-            >
-              <v-avatar left>
-                <v-img :src="data.item.avatar"></v-img>
-              </v-avatar>
-              {{ data.item.name }}
-            </v-chip> -->
-            {{ data.item.name }}
-          </template>
-          <template v-slot:item="data">
-            <template v-if="typeof data.item !== 'object'">
-              <v-list-item-content v-text="data.item"></v-list-item-content>
-            </template>
-            <template v-else>
-              <v-list-item-avatar>
-                <img :src="data.item.avatar" />
-              </v-list-item-avatar>
-              <v-list-item-content>
-                <v-list-item-title v-html="data.item.name"></v-list-item-title>
-                <v-list-item-subtitle
-                  v-html="data.item.group"
-                ></v-list-item-subtitle>
-              </v-list-item-content>
-              <v-list-item-action>
-                <v-btn icon color="pink">
-                  <v-icon>mdi-heart</v-icon>
-                </v-btn>
-              </v-list-item-action>
-            </template>
-          </template>
-        </v-autocomplete>
-        <!-- <v-text-field
-          flat
-          outlined
-          height="100%"
-          placeholder="Search"
-          prepend-inner-icon="mdi-magnify"
-        >
-        </v-text-field> -->
+        <auto-complete></auto-complete>
       </div>
       <v-divider vertical></v-divider>
       <v-avatar style="flex-shrink: 2" min-width="36" right class="mx-4">
@@ -330,13 +289,16 @@ const srcs = {
   4: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
   5: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
 };
-
+import AutoComplete from "@/components/AutoComplete";
 export default {
   name: "DefaultLayout",
+  components: {
+    AutoComplete,
+  },
   data() {
     return {
-      clipped: false,
-      drawer: false,
+      // clipped: false,
+      // drawer: false,
       fixed: false,
       navbarIcons: [
         {
@@ -344,44 +306,42 @@ export default {
           title: "FEED",
           message: 0,
           to: "/feed",
+          active: false
         },
         {
           icon: "mdi-account-multiple",
           title: "NETWORK",
-          message: 0,
+          message: 1,
           to: "/network",
+          active: false
         },
         {
           icon: "mdi-qqchat",
           title: "JOBS",
           message: 0,
           to: "/jobs",
-        },
-        {
-          icon: "mdi-sd",
-          title: "CHAT",
-          message: 1,
-          to: "/chat",
+          active: false
         },
         {
           icon: "mdi-star-outline",
           title: "NOTICES",
           message: 0,
           to: "/notices",
+          active: false
         },
       ],
-      items: [
-        {
-          icon: "mdi-apps",
-          title: "Welcome",
-          to: "/",
-        },
-        {
-          icon: "mdi-chart-bubble",
-          title: "Inspire",
-          to: "/inspire",
-        },
-      ],
+      // items: [
+      //   {
+      //     icon: "mdi-apps",
+      //     title: "Welcome",
+      //     to: "/",
+      //   },
+      //   {
+      //     icon: "mdi-chart-bubble",
+      //     title: "Inspire",
+      //     to: "/inspire",
+      //   },
+      // ],
       footerList: [
         {
           content: [
@@ -435,34 +395,6 @@ export default {
       right: true,
       rightDrawer: false,
       title: "Vuetify.js",
-      friends: "",
-      people: [
-        { header: "JOBS" },
-        { name: "UX/UI Designer", group: "Upwork", avatar: srcs[1] },
-        { name: "Part-time UX designer", group: "Google", avatar: srcs[2] },
-        { header: "All jobs (84)" },
-        { divider: true },
-        { header: "Users" },
-        {
-          name: "Brandon Wilson",
-          group: "Senior UX designer",
-          avatar: srcs[3],
-        },
-        {
-          name: "Kyle Fisher",
-          group: "Product designer at Commandor Corp.",
-          avatar: srcs[2],
-        },
-        { header: "All users (1,530)" },
-        { divider: true },
-        { header: "Articles" },
-        {
-          name: "A little about usability testing",
-          group: "3,912 viewers",
-          avatar: srcs[4],
-        },
-        { header: "All articles (30)" },
-      ],
       demandLists: [
         {
           child: [
@@ -526,6 +458,21 @@ export default {
     };
   },
   methods: {
+    gotoIndex() {
+      this.navbarIcons.forEach((ele) => {
+        ele.active = false
+      })
+      this.$router.push('/')
+    },
+    checkTab(item) {
+      this.navbarIcons.forEach((ele) => {
+        if (item.title === ele.title) {
+          ele.active = true;
+        } else {
+          ele.active = false;
+        }
+      });
+    },
     remove(item) {
       const index = this.friends.indexOf(item.name);
       if (index >= 0) this.friends.splice(index, 1);
@@ -540,12 +487,8 @@ export default {
 ul {
   list-style-type: none;
 }
-.v-list {
-  padding: 0 16px !important;
+::v-deep header.v-app-bar .v-toolbar__content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
-// ::v-deep .v-list .v-list-item {
-//   border: 1px solid #eee !important;
-//   width: 95% !important;
-//   margin: 0 auto 16px auto !important;
-// }
 </style>

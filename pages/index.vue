@@ -19,8 +19,11 @@
         </v-img>
       </v-card>
       <v-card class="px-6 mb-4">
-        <div class="d-flex">
-          <v-avatar size="200" style="margin-top: -10%; border: 4px solid #fff">
+        <div class="d-flex flex-column flex-md-row justify-center align-center">
+          <v-avatar
+            :size="$vuetify.breakpoint.lg ? '200' : '100'"
+            style="margin-top: -10%; border: 4px solid #fff"
+          >
             <img
               src="https://cdn.vuetifyjs.com/images/john.jpg"
               width="180"
@@ -28,7 +31,14 @@
             />
           </v-avatar>
           <v-card-text class="mb-4">
-            <div class="d-flex justify-space-between align-center">
+            <div
+              class="
+                d-flex
+                flex-column flex-md-row
+                justify-space-between
+                align-center
+              "
+            >
               <div class="text-subtitle-1 font-weight-bold">
                 <div class="d-flex align-center">
                   <div class="mr-1">Dmitry Kargaev</div>
@@ -44,14 +54,18 @@
               Freelance UX/UI designer, 80+ projects in web design, mobile apps
               (iOS & android) and creative projects. Open to offers.
             </p>
-            <v-btn color="primary" nuxt to="/inspire" class="mr-3">
-              <span class="white--text">Contact info</span></v-btn
+            <div
+              class="d-flex flex-column flex-md-row justify-center justify-md-start align-center"
             >
-            <v-btn outlined color="blue darken-2"> 1,043 connections </v-btn>
+              <v-btn color="primary" nuxt to="/inspire" class="mr-md-3 mb-4 mb-md-0">
+                <span class="white--text">Contact info</span></v-btn
+              >
+              <v-btn outlined color="blue darken-2"> 1,043 connections </v-btn>
+            </div>
           </v-card-text>
         </div>
       </v-card>
-      <v-tabs fixed-tabs v-model="currentTab" class="mb-4">
+      <v-tabs fixed-tabs v-model="currentTab" class="mb-6 mb-md-4" show-arrows>
         <v-tab
           :style="
             currentTab == idx

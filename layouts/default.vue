@@ -67,7 +67,7 @@
     <v-navigation-drawer
       v-model="rightDrawer"
       :right="right"
-      width="370"
+      :width="$vuetify.breakpoint.lg ?'370':'100%'"
       temporary
       fixed
     >
@@ -233,20 +233,19 @@
     <v-footer
       :absolute="!fixed"
       app
-      class="justify-space-around align-start pa-4"
+      class="d-flex flex-column flex-md-row justify-md-space-around align-md-start pa-4"
     >
-      <div>
-        <v-icon class="ml-2 mr-6" x-large color="blue darken-2"
-          >mdi-linkedin
-        </v-icon>
+      <div class="d-flex flex-column justify-center align-center mb-6 mb-md-0">
+        <v-icon x-large color="blue darken-2">mdi-linkedin </v-icon>
         <div class="font-weight-bold">
           Linked<span class="blue--text">In</span>
         </div>
       </div>
-      <div>
-        <div class="text-subtitle-2 mb-4">Navigation</div>
-        <div class="d-flex">
-          <ul v-for="(item, idx) in footerList" :key="idx">
+      <div class="mb-6 mb-md-0" :class="$vuetify.breakpoint.lg ?'':'d-flex flex-column flex-md-row'"
+      >
+        <div class="text-subtitle-2 mb-4" :class="$vuetify.breakpoint.lg ?' text-left':' text-center'">Navigation</div>
+        <div class="d-block d-md-flex" :class="$vuetify.breakpoint.lg ? '':' text-center'">
+          <ul v-for="(item, idx) in footerList" :key="idx" class="pl-0 pl-md-6">
             <li
               v-for="(ele, id) in item.content"
               :key="id"
@@ -257,7 +256,7 @@
           </ul>
         </div>
       </div>
-      <div>
+      <div class="mb-6 mb-md-0">
         <div class="text-subtitle-2 mb-4">Fast access</div>
         <div class="d-flex flex-column">
           <v-btn color="blue darken-2" class="mb-3">
@@ -270,7 +269,7 @@
           </v-btn>
         </div>
       </div>
-      <div>
+      <div class="mb-6 mb-md-0">
         <div class="text-subtitle-2 mb-4">Language</div>
         <v-select
           solo

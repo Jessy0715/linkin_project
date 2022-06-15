@@ -37,6 +37,7 @@
                 flex-column flex-md-row
                 justify-space-between
                 align-center
+                mb-2 mb-md-0
               "
             >
               <div class="text-subtitle-1 font-weight-bold">

@@ -6,7 +6,7 @@
       :clipped="clipped"
       fixed
       app
-      class="d-block d-md-none"
+      class="d-block d-sm-none"
     >
       <div class="d-flex flex-column align-center py-4">
         <v-avatar style="flex-shrink: 2" min-width="36" right class="mx-4">
@@ -225,7 +225,7 @@
       </div>
       <v-divider vertical></v-divider>
     </v-app-bar>
-    <v-main>
+    <v-main class="pt-14 pt-md-0 pl-md-0">
       <v-container>
         <Nuxt />
       </v-container>
@@ -270,7 +270,7 @@
         </div>
       </div>
       <div class="mb-6 mb-md-0">
-        <div class="text-subtitle-2 mb-4">Language</div>
+        <div class="text-subtitle-2 mb-4" :class="$vuetify.breakpoint.lg ?' text-left':' text-center'">Language</div>
         <v-select
           solo
           :items="languageItems"

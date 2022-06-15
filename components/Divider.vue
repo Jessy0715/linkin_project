@@ -1,6 +1,6 @@
 <template>
   <div class="separator my-8">
-    <div class="separator__text text-uppercase font-weight-medium px-8">
+    <div class="separator__text text-uppercase font-weight-medium px-8" :style="$vuetify.breakpoint.lg ?'left:38%':'left:auto; width: 100%; text-align:center'">
       <slot name="txt">預設文字1</slot>
       <slot name="txt2">預設文字2</slot>
     </div>
@@ -8,7 +8,7 @@
 </template>
 <script>
 export default {
-  name: "",
+  name: "Divider",
   data() {
     return {};
   },
@@ -22,10 +22,8 @@ export default {
   width: 100%;
   border-top: 1px solid #eee;
   &__text {
-    left: 38%;
     transform: translateY(-50%);
     position: absolute;
-    background-color: #fff;
   }
 }
 </style>

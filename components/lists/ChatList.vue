@@ -2,7 +2,7 @@
   <v-list>
     <template v-for="(item, idx) in list">
       <v-list-item :key="idx" style="border-radius: 5px;margin-bottom: 16px;">
-        <section class="avatars-group py-3 stacked">
+        <section class="avatars-group py-3 stacked" :style="$vuetify.breakpoint.lg ?'width: 12%':'width: 30%'">
           <div
             v-for="avatar in avatarsStackedLimited"
             :key="`avatar-id-${avatar.id}`"
@@ -19,7 +19,7 @@
           </v-list-item-title>
           <v-list-item-subtitle>{{ item.time }}</v-list-item-subtitle>
         </v-list-item-content>
-        <v-list-item-action>
+        <v-list-item-action class="d-none d-md-block">
           <v-btn icon>
             <v-icon size="28">mdi-dots-horizontal</v-icon>
           </v-btn>
@@ -185,7 +185,6 @@ export default {
   display: flex;
   flex-direction: row;
   direction: ltr;
-  width: 12%;
   max-width: 100%;
   overflow: hidden;
   overflow-x: auto;

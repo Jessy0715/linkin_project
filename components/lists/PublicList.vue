@@ -16,9 +16,16 @@
             ? 'background: #e8f1f8; margin-bottom: 16px;'
             : isJobPage || isNetworkPage
             ? 'background: #fff; margin-bottom: 16px;'
-            : 'background: transparent;'"
+            : 'background: transparent;'
+        "
       >
-        <v-list-item-avatar :style="isFeedPage|| isJobPage || isNetworkPage ? 'margin-top: auto; margin-bottom: auto' : ''">
+        <v-list-item-avatar
+          :style="
+            isFeedPage || isJobPage || isNetworkPage
+              ? 'margin-top: auto; margin-bottom: auto'
+              : ''
+          "
+        >
           <v-img :src="item.avatar"></v-img>
         </v-list-item-avatar>
 
@@ -44,7 +51,9 @@
               </div>
             </template>
             <template v-if="isNetworkPage">
-              <span class="blue--text font-weight-thin">{{ item.connections }}</span>
+              <span class="blue--text font-weight-thin">{{
+                item.connections
+              }}</span>
             </template>
           </v-list-item-subtitle>
           <v-list-item-subtitle>
@@ -52,15 +61,35 @@
               item.intro
             }}</span>
           </v-list-item-subtitle>
+          <v-list-item-subtitle v-if="isNetworkPage" class="d-block d-md-none mt-2">
+            <div class="text-caption pr-4">
+              Hey, I saw your works. I like it! Can we do something together? Or
+              maybe you have project for UX at the moment?
+            </div>
+          </v-list-item-subtitle>
+          <v-list-item-subtitle v-if="isNetworkPage" class="d-block d-md-none mt-2">
+            <div class="d-flex">
+              <v-btn color="primary" class="mr-3">
+                <span class="white--text">Accept</span>
+              </v-btn>
+              <v-btn color="primary" disabled outlined>
+                <span>Decline</span>
+              </v-btn>
+            </div>
+          </v-list-item-subtitle>
         </v-list-item-content>
-        <v-list-item-content v-if="isNetworkPage">
-          <div class="text-caption px-4" style="border-left: 2px solid #1976D2">
+        <v-list-item-content v-if="isNetworkPage" class="d-none d-md-block">
+          <div class="text-caption px-4" style="border-left: 2px solid #1976d2">
             Hey, I saw your works. I like it! Can we do something together? Or
             maybe you have project for UX at the moment?
           </div>
         </v-list-item-content>
         <v-list-item-action
-          :style="isFeedPage|| isJobPage || isNetworkPage ? 'margin-top: auto; margin-bottom: auto' : ''"
+          :style="
+            isFeedPage || isJobPage
+              ? 'margin-top: auto; margin-bottom: auto'
+              : ''
+          "
         >
           <v-btn icon v-if="isFeedPage">
             <v-icon color="blue darken-2" size="28">mdi-cloud-download</v-icon>
@@ -72,13 +101,15 @@
           >
             More
           </v-btn>
-          <div class="d-flex" v-if="isNetworkPage">
-            <v-btn color="primary" class="mr-3">
-              <span class="white--text">Accept</span>
-            </v-btn>
-            <v-btn color="primary" disabled outlined>
-              <span>Decline</span>
-            </v-btn>
+          <div v-if="isNetworkPage" class="d-none d-md-block">
+            <div class="d-flex">
+              <v-btn color="primary" class="mr-3">
+                <span class="white--text">Accept</span>
+              </v-btn>
+              <v-btn color="primary" disabled outlined>
+                <span>Decline</span>
+              </v-btn>
+            </div>
           </div>
         </v-list-item-action>
       </v-list-item>

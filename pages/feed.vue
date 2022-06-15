@@ -21,7 +21,7 @@
         ></v-img>
         <template slot="name">{{ item.name }}</template>
         <template slot="jobTitle">{{ item.jobTitle }}</template>
-        <p class="text-body-1">
+        <p class="text-body-2">
           {{ item.context }}
         </p>
         <v-img
@@ -54,18 +54,24 @@
           <template slot="txt">write new article</template>
         </btn-show>
       </v-card>
-      <v-card class="py-4 px-6 mb-6" style="background: #fcfefd">
+      <v-card class="py-4 px-6 mb-6" color="#fcfefd">
         <div
           class="d-flex justify-space-between align-center text-uppercase my-2"
         >
           <div class="font-weight-medium">my groups</div>
-          <div class="font-weight-medium blue--text text--darken-2">
+          <div
+            class="font-weight-medium blue--text text--darken-2"
+            style="cursor: pointer"
+          >
             Edit list
           </div>
         </div>
         <v-divider class="my-4"></v-divider>
         <sm-list class="mt-2" :list="groupList" :isGroupPage="true"></sm-list>
-        <div class="text-uppercase blue--text text--darken-2 text--caption">
+        <div
+          class="text-uppercase blue--text text--darken-2 text-body-2 font-weight-medium"
+          style="cursor: pointer"
+        >
           Show all (8)
         </div>
       </v-card>

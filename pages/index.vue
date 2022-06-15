@@ -2,7 +2,7 @@
   <v-row justify="center" align="start">
     <v-col cols="12" sm="8" md="8">
       <div class="d-block d-md-none">
-        <auto-complete :show="getVal"></auto-complete>
+        <auto-complete :show="getAppearState"></auto-complete>
       </div>
       <v-card class="logo d-flex justify-center">
         <v-img src="https://picsum.photos/350/165?random" height="200px">
@@ -11,8 +11,8 @@
               <v-icon>mdi-upload</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
-            <v-btn color="white" class="">
-              <v-icon left color="dark">mdi-account-edit </v-icon>
+            <v-btn color="white">
+              <v-icon left>mdi-account-edit </v-icon>
               <span class="black--text">EDIT PROFILE</span>
             </v-btn>
             <v-btn dark icon>
@@ -46,11 +46,11 @@
               <div class="text-subtitle-1 font-weight-bold">
                 <div class="d-flex align-center">
                   <div class="mr-1">Dmitry Kargaev</div>
-                  <v-icon small color="amber darken-1">mdi-linkedin </v-icon>
+                  <v-icon small color="#d1ad68">mdi-linkedin </v-icon>
                 </div>
               </div>
               <div>
-                <v-icon color="blue">mdi-menu-up</v-icon>
+                <v-icon color="primary">mdi-menu-up</v-icon>
                 <small>Saint Petersburg, Russian Federation</small>
               </div>
             </div>
@@ -68,13 +68,11 @@
             >
               <v-btn
                 color="primary"
-                nuxt
-                to="/inspire"
                 class="mr-md-3 mb-4 mb-md-0"
               >
                 <span class="white--text">Contact info</span></v-btn
               >
-              <v-btn outlined color="blue darken-2"> 1,043 connections </v-btn>
+              <v-btn outlined color="primary"> 1,043 connections </v-btn>
             </div>
           </v-card-text>
         </div>
@@ -83,7 +81,7 @@
         <v-tab
           :style="
             currentTab == idx
-              ? 'color: white; background-color: #1976D2; border-top-left-radius: 8px; border-top-right-radius: 8px;'
+              ? 'color: white; background-color: #1976D2; border-top-left-radius: 5px; border-top-right-radius: 5px;'
               : ''
           "
           v-for="(item, idx) in tabs"
@@ -99,7 +97,7 @@
           apps, but also like to work with creative projects, such as landing
           pages or unusual corporate websites.
         </p>
-        <small class="blue--text text--darken-2 font-weight-bold text-uppercase"
+        <small class="blue--text text--darken-2 font-weight-bold text-uppercase" style="cursor: pointer"
           >See more</small
         >
       </v-card>
@@ -109,7 +107,7 @@
           <div>3 of 12</div>
         </div>
         <project-list :lists="imgSet"></project-list>
-        <small class="blue--text text--darken-2 font-weight-bold text-uppercase"
+        <small class="blue--text text--darken-2 font-weight-bold text-uppercase" style="cursor: pointer"
           >Show all (12)</small
         >
       </v-card>
@@ -132,7 +130,7 @@
                     {{ item.num }}
                   </div>
                 </div>
-                <section class="avatars-group pa-3 stacked">
+                <section class="avatars-group py-3 stacked">
                   <div
                     v-for="avatar in avatarsStackedLimited"
                     :key="`avatar-id-${avatar.id}`"
@@ -150,7 +148,7 @@
             </v-list-item>
           </v-col>
         </v-row>
-        <small class="blue--text text--darken-2 font-weight-bold text-uppercase"
+        <small class="blue--text text--darken-2 font-weight-bold text-uppercase" style="cursor: pointer"
           >Show all (17)</small
         >
       </v-card>
@@ -167,7 +165,7 @@
       <v-card class="mb-4">
         <score-list :list="scoreLists"></score-list>
       </v-card>
-      <v-card class="py-4 px-6 mb-6" style="background: #fcfefd">
+      <v-card class="py-4 px-6 mb-6" color="#fcfefd">
         <div
           class="d-flex justify-space-between align-center text-uppercase my-2"
         >
@@ -188,7 +186,7 @@
           :isVideo="true"
           :isVertical="true"
         ></project-list>
-        <small class="blue--text text--darken-2 font-weight-bold text-uppercase"
+        <small class="blue--text text--darken-2 font-weight-bold text-uppercase" style="cursor: pointer"
           >See all recommendations</small
         >
       </v-card>
@@ -484,7 +482,7 @@ export default {
         ? this.avatarsSorted.slice(0, this.stackedLimit)
         : null;
     },
-    getVal() {
+    getAppearState() {
       return this.$store.getters.getAppear;
     },
   },

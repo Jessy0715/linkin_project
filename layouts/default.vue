@@ -9,12 +9,12 @@
       class="d-block d-sm-none"
     >
       <div class="d-flex flex-column align-center py-4">
-        <v-avatar style="flex-shrink: 2" min-width="36" right class="mx-4">
+        <v-avatar min-width="36" right class="mb-2">
           <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
         </v-avatar>
         <div>
           D. Kargaev
-          <v-icon small color="amber darken-1">mdi-linkedin </v-icon>
+          <v-icon small color="#d1ad68">mdi-linkedin </v-icon>
         </div>
         <div>
           <span class="grey--text"> 367 views today</span>
@@ -25,7 +25,7 @@
       <v-list>
         <v-list-item
           to="/"
-          active-class="blue darken-2"
+          active-class="primary"
           exact-active-class="white--text"
         >
           <v-list-item-action>
@@ -41,7 +41,7 @@
           :to="item.to"
           router
           exact
-          active-class="blue darken-2"
+          active-class="primary"
           exact-active-class="white--text"
         >
           <v-list-item-action>
@@ -55,7 +55,7 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app class="d-block d-md-none">
       <v-app-bar-nav-icon @click.stop="leftDrawer = !leftDrawer" />
-      <v-btn icon @click="checkAppear">
+      <v-btn icon @click="checkAutoComplete">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
       <v-spacer />
@@ -91,10 +91,7 @@
       <v-divider></v-divider>
       <section class="px-4">
         <v-list class="mt-2">
-          <v-list-item
-            style="background: #1976d2; border-radius: 5px"
-            class="white--text"
-          >
+          <v-list-item style="border-radius: 5px" class="white--text primary">
             <v-list-item-avatar>
               <v-img src="https://cdn.vuetifyjs.com/images/lists/1.jpg"></v-img>
             </v-list-item-avatar>
@@ -146,7 +143,7 @@
       <section class="px-4">
         <v-list class="mt-2">
           <v-list-item
-            style="background: #c8b479; border-radius: 5px"
+            style="background: #d1ad68; border-radius: 5px"
             class="white--text"
           >
             <v-list-item-content>
@@ -178,7 +175,7 @@
           <NuxtLink
             :to="item.to"
             class="d-flex flex-wrap flex-column align-center mx-8"
-            style="text-decoration: none; color: #000"
+            style="text-decoration: none; color: #181818"
           >
             <v-badge
               :content="item.message"
@@ -186,7 +183,7 @@
               color="orange lighten-2"
               overlap
             >
-              <v-icon :color="item.active ? 'blue darken-2' : ''" size="20px">{{
+              <v-icon :color="item.active ? 'primary' : ''" size="20px">{{
                 item.icon
               }}</v-icon>
             </v-badge>
@@ -220,12 +217,12 @@
           @click.stop="rightDrawer = !rightDrawer"
         >
           <v-icon>mdi-dots-horizontal</v-icon>
-          <small>OTHER</small>
+          <small class="text-uppercase">other</small>
         </div>
       </div>
       <v-divider vertical></v-divider>
     </v-app-bar>
-    <v-main class="pt-14 pt-md-0 pl-md-0 mb-6">
+    <v-main class="pt-14 pt-md-0 pl-md-0 mb-6" style="background-color: #f8f9fb">
       <v-container>
         <Nuxt />
       </v-container>
@@ -274,15 +271,20 @@
         </div>
       </div>
       <div class="mb-6 mb-md-0">
-        <div class="text-subtitle-2 mb-4">Fast access</div>
+        <div
+          class="text-subtitle-2 mb-4"
+          :class="$vuetify.breakpoint.lg ? ' text-left' : ' text-center'"
+        >
+          Fast access
+        </div>
         <div class="d-flex flex-column">
-          <v-btn color="blue darken-2" class="mb-3">
+          <v-btn color="primary" class="mb-3">
             <span class="white--text">QUESTIONS?</span>
-            <v-icon right color="white">mdi-comment-question-outline </v-icon>
+            <v-icon right>mdi-comment-question-outline </v-icon>
           </v-btn>
-          <v-btn outlined color="blue darken-2">
+          <v-btn outlined color="primary">
             SETTINGS?&nbsp;
-            <v-icon right color="dark">mdi-comment-question-outline</v-icon>
+            <v-icon right>mdi-comment-question-outline</v-icon>
           </v-btn>
         </div>
       </div>
@@ -294,11 +296,11 @@
           Language
         </div>
         <v-select
+          v-model="language"
           solo
           :items="languageItems"
           label=""
           dense
-          v-model="language"
         ></v-select>
       </div>
     </v-footer>
@@ -324,6 +326,11 @@ export default {
       clipped: false,
       leftDrawer: false,
       fixed: false,
+      language: "ENGLISH",
+      languageItems: ["ENGLISH", "CHINESE"],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
       navbarIcons: [
         {
           icon: "mdi-cast",
@@ -352,18 +359,6 @@ export default {
           message: 0,
           to: "/notices",
           active: false,
-        },
-      ],
-      items: [
-        {
-          icon: "mdi-apps",
-          title: "Welcome",
-          to: "/",
-        },
-        {
-          icon: "mdi-chart-bubble",
-          title: "Inspire",
-          to: "/inspire",
         },
       ],
       footerList: [
@@ -413,11 +408,6 @@ export default {
           ],
         },
       ],
-      language: "ENGLISH",
-      languageItems: ["ENGLISH", "CHINESE"],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
       demandLists: [
         {
           child: [
@@ -503,7 +493,7 @@ export default {
     closeDrawer() {
       this.rightDrawer = false;
     },
-    checkAppear() {
+    checkAutoComplete() {
       this.$store.dispatch("handAppear");
     },
   },
@@ -512,9 +502,5 @@ export default {
 <style lang="scss" scoped>
 ul {
   list-style-type: none;
-}
-::v-deep header.v-app-bar .v-toolbar__content {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
 }
 </style>

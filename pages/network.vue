@@ -8,7 +8,7 @@
         <v-tab
           :style="
             currentTab == idx
-              ? 'color: white; background-color: #1976D2; border-top-left-radius: 8px; border-top-right-radius: 8px;'
+              ? 'color: white; background-color: #1976D2; border-top-left-radius: 5px; border-top-right-radius: 5px;'
               : ''
           "
           v-for="(item, idx) in tabs"
@@ -34,7 +34,7 @@
         <v-col cols="12" sm="6" md="6">
           <sm-list :list="visitorList"></sm-list>
         </v-col>
-        <v-col cols="12" sm="6" md="6">
+        <v-col cols="12" sm="6" md="6" :style="$vuetify.breakpoint.lg ?'':'margin-top: -32px'">
           <sm-list :list="visitorList2"></sm-list>
         </v-col>
       </v-row>

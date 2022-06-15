@@ -30,7 +30,7 @@
           <template slot="txt">post a job</template>
         </btn-show>
       </v-card>
-      <v-card class="py-4 px-6 mb-6" style="background: #fcfefd">
+      <v-card class="py-4 px-6 mb-6" color="#fcfefd">
         <div
           class="d-flex justify-space-between align-center text-uppercase my-2"
         >

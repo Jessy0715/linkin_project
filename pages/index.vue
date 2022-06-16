@@ -40,7 +40,7 @@
                 flex-column flex-md-row
                 justify-space-between
                 align-center
-                mb-2 mb-md-0
+                mb-2 mb-md-4
               "
             >
               <div class="text-subtitle-1 font-weight-bold">
@@ -54,7 +54,7 @@
                 <small>Saint Petersburg, Russian Federation</small>
               </div>
             </div>
-            <p class="text-body-2">
+            <p class="text-body-2 mb-4">
               Freelance UX/UI designer, 80+ projects in web design, mobile apps
               (iOS & android) and creative projects. Open to offers.
             </p>

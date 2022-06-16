@@ -1,4 +1,9 @@
 <template>
+  <!-- 
+    Vuetify 
+    1.v-tabs 元件 class 狀態不能預先移除 => 自己建立 navbar
+    2.建立 PC 與 MB版本 v-app-bar
+  -->
   <v-app dark>
     <v-navigation-drawer
       v-model="leftDrawer"
@@ -222,7 +227,10 @@
       </div>
       <v-divider vertical></v-divider>
     </v-app-bar>
-    <v-main class="pt-14 pt-md-0 pl-md-0 mb-6" style="background-color: #f8f9fb">
+    <v-main
+      class="pt-14 pt-md-0 pl-md-0 mb-6"
+      style="background-color: #f8f9fb"
+    >
       <v-container>
         <Nuxt />
       </v-container>

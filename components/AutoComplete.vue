@@ -1,4 +1,9 @@
 <template>
+  <!-- 
+    v-autocomplete 元件:
+    1.slot: item 沒辦法新增 '非 v-item-list 以外的元件'，
+    2.people[0][header] => 樣式可調整性不高 
+  -->
   <v-autocomplete
     v-show="show"
     v-model="friends"
@@ -38,8 +43,8 @@
           <v-list-item-subtitle v-html="data.item.group"></v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-action>
-          <v-btn icon color="pink">
-            <v-icon>mdi-heart</v-icon>
+          <v-btn icon color="#E0E0E0">
+            <v-icon>mdi-chevron-right</v-icon>
           </v-btn>
         </v-list-item-action>
       </template>
@@ -58,9 +63,9 @@
 const srcs = {
   1: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
   2: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
-  3: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
+  3: "https://xsgames.co/randomusers/avatar.php?g=female",
   4: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
-  5: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
+  5: "https://xsgames.co/randomusers/avatar.php?g=male",
 };
 
 export default {
@@ -88,7 +93,7 @@ export default {
         {
           name: "Kyle Fisher",
           group: "Product designer at Commandor Corp.",
-          avatar: srcs[2],
+          avatar: srcs[5],
         },
         { header: "All users (1,530)" },
         { divider: true },

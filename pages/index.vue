@@ -12,7 +12,7 @@
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn color="white">
-              <v-icon left>mdi-account-edit </v-icon>
+              <v-icon left> mdi-pencil-box-outline </v-icon>
               <span class="black--text">EDIT PROFILE</span>
             </v-btn>
             <v-btn dark icon>
@@ -50,7 +50,7 @@
                 </div>
               </div>
               <div>
-                <v-icon color="primary">mdi-menu-up</v-icon>
+                <v-icon color="primary" small style="transform: rotate(30deg)">mdi-navigation</v-icon>
                 <small>Saint Petersburg, Russian Federation</small>
               </div>
             </div>

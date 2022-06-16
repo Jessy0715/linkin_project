@@ -28,18 +28,18 @@
     <v-divider></v-divider>
     <div class="d-flex align-center px-4">
       <div class="pa-4">
-        <v-icon size="26" color="blue darken-2">mdi-arrow-top-right</v-icon>
+        <v-icon size="20" color="blue darken-2">mdi-thumb-up-outline</v-icon>
         <slot name="facebookNum">預設 facebookNum </slot>
       </div>
        <v-divider vertical></v-divider>
       <div class="pa-4">
-        <v-icon size="26" color="blue darken-2"> mdi-message-outline</v-icon>
+        <v-icon size="20" color="blue darken-2"> mdi-message-outline</v-icon>
         <slot name="msgNum">預設 msgNum </slot>
       </div>
        <v-divider vertical></v-divider>
       <v-spacer></v-spacer>
       <div class="pa-4">
-        <v-icon size="26" color="blue darken-2"> mdi-share-variant</v-icon>
+        <v-icon size="20" color="blue darken-2"> mdi-share-variant</v-icon>
         <span>share</span>
       </div>
     </div>

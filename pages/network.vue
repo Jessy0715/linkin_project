@@ -57,12 +57,12 @@ export default {
   data() {
     return {
       sideLists: [
-        { text: "Connections", num: 1038, icon: "mdi-clock", circle: false },
-        { text: "Invitations", num: 2, icon: "mdi-account", circle: true },
+        { text: "Connections", num: 1038, icon: "mdi-link", circle: false },
+        { text: "Invitations", num: 2, icon: "mdi-crosshairs", circle: true },
         { text: "Teammates", num: 10, icon: "mdi-flag", circle: false },
-        { text: "groups", num: 6, icon: "mdi-clock", circle: false },
-        { text: "pages", num: 28, icon: "mdi-account", circle: false },
-        { text: "hashtags", num: 8, icon: "mdi-flag", circle: false },
+        { text: "groups", num: 6, icon: "mdi-account-multiple", circle: false },
+        { text: "pages", num: 28, icon: "mdi-layers", circle: false },
+        { text: "hashtags", num: 8, icon: "mdi-pound", circle: false },
       ],
       currentTab: "",
       tabs: ["Received", "sent"],

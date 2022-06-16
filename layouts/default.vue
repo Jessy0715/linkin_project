@@ -280,11 +280,11 @@
         <div class="d-flex flex-column">
           <v-btn color="primary" class="mb-3">
             <span class="white--text">QUESTIONS?</span>
-            <v-icon right>mdi-comment-question-outline </v-icon>
+            <v-icon right> mdi-bookmark-outline </v-icon>
           </v-btn>
           <v-btn outlined color="primary">
             SETTINGS?&nbsp;
-            <v-icon right>mdi-comment-question-outline</v-icon>
+            <v-icon right> mdi-bookmark</v-icon>
           </v-btn>
         </div>
       </div>
@@ -333,7 +333,7 @@ export default {
       rightDrawer: false,
       navbarIcons: [
         {
-          icon: "mdi-cast",
+          icon: "mdi-rss",
           title: "FEED",
           message: 0,
           to: "/feed",
@@ -347,14 +347,14 @@ export default {
           active: false,
         },
         {
-          icon: "mdi-qqchat",
+          icon: "mdi-briefcase",
           title: "JOBS",
           message: 0,
           to: "/jobs",
           active: false,
         },
         {
-          icon: "mdi-star-outline",
+          icon: "mdi-bell-outline",
           title: "NOTICES",
           message: 0,
           to: "/notices",

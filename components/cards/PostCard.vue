@@ -17,7 +17,7 @@
             min-width="25"
             max-height="25"
           >
-            <v-icon size="20"> {{ item.name }} </v-icon>
+            <v-icon size="20" :style="idx == 3 || idx == 0 ? 'transform: rotate(-30deg)':''"> {{ item.name }} </v-icon>
           </v-btn>
         </template>
         <template v-if="isJobPage">
@@ -49,30 +49,30 @@ export default {
     return {
       iconGroup: [
         {
-          name: "mdi-clock",
+          name: "mdi-attachment",
           isDisabled: true,
         },
         {
-          name: "mdi-account",
+          name: "mdi-file-image",
           isDisabled: false,
         },
         {
-          name: "mdi-flag",
+          name: "mdi-movie",
           isDisabled: true,
         },
         {
-          name: "mdi-application",
+          name: "mdi-send",
           isDisabled: true,
         },
       ],
       jobIconGroup: [
         {
-          name: "mdi-flag",
+          name: "mdi-filter-variant",
           isDisabled: true,
         },
         {
-          name: "mdi-application",
-          isDisabled: true,
+          name: "mdi-magnify",
+          isDisabled: false,
         },
       ],
     };

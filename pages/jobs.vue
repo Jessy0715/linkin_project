@@ -86,7 +86,7 @@ export default {
     return {
       jobLists: [
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=female",
           connections: "",
           workRange: "Upwork",
           workRangeNote: "Remote only",
@@ -97,7 +97,7 @@ export default {
             "On Upwork you'll find a range of top freelancers and agencies, from developers and development agencies to designers and creative agencies, copywriters",
         },
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
           connections: "",
           workRange: "Facebook",
           workRangeNote: "CA, USA",
@@ -108,7 +108,7 @@ export default {
             "Founded in 2004, Facebook's mission is to give people the power to build community and bring the world closer together. People use our products to stay.",
         },
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=female",
           connections: "",
           workRange: "Google",
           workRangeNote: "International",
@@ -119,7 +119,7 @@ export default {
             "Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking.",
         },
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
           connections: "",
           workRange: "LinkedIn",
           workRangeNote: "CA, USA",
@@ -132,7 +132,7 @@ export default {
       ],
       jobLists2: [
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=female",
           connections: "",
           workRange: "Instagram",
           workRangeNote: "CA, USA",
@@ -143,7 +143,7 @@ export default {
             "Instagram is a photo and video-sharing social networking service owned by Facebook, Inc. ",
         },
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
           connections: "",
           workRange: "Periscope",
           workRangeNote: "Remote only",
@@ -196,7 +196,7 @@ export default {
       ],
       trackedLists: [
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=female",
           name: "UX/UI Designer",
           jobTitle: "Upwork",
           date: "",
@@ -204,7 +204,7 @@ export default {
           isRing: false,
         },
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=male",
           name: "Product designer",
           jobTitle: "Facebook",
           date: "",

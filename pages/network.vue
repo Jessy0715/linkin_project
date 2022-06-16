@@ -68,7 +68,7 @@ export default {
       tabs: ["Received", "sent"],
       networkLists: [
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=female",
           connections: "623 connections",
           workRange: "Senior UX designer",
           workRangeNote: "",
@@ -78,7 +78,7 @@ export default {
           intro: "",
         },
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
           connections: "481 connections",
           workRange: "iOS developer",
           workRangeNote: "",
@@ -90,7 +90,7 @@ export default {
       ],
       visitorList: [
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=male",
           name: "Darlene Black",
           jobTitle: "HR-manager, 10 000 connection",
           date: "26 aug, monday",
@@ -98,7 +98,7 @@ export default {
           isRing: false,
         },
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=female",
           name: "Theresa Steward",
           jobTitle: "iOS developer",
           date: "Yesterday, 12:03",
@@ -108,7 +108,7 @@ export default {
       ],
       visitorList2: [
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=female",
           name: "Brandon Wilson",
           jobTitle: "Senior UX designer",
           date: "25 aug, sunday",
@@ -116,7 +116,7 @@ export default {
           isRing: false,
         },
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=male",
           name: "Kyle Fisher",
           jobTitle: "Product designer",
           date: "26 aug, monday",

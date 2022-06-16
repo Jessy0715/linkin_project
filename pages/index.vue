@@ -396,7 +396,7 @@ export default {
       stackedLimit: 4,
       experienceLists: [
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
           connections: "",
           workRange: "Self Employed",
           workRangeNote: "Around the world",
@@ -408,7 +408,7 @@ export default {
         },
         { divider: true, inset: true },
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=female",
           connections: "",
           workRange: "Upwork",
           workRangeNote: "International",
@@ -422,7 +422,7 @@ export default {
       ],
       educationLists: [
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
           connections: "",
           workRange:
             "Bachelor's degree Field Of StudyComputer and Information Systems Security/Information Assurance",
@@ -453,7 +453,7 @@ export default {
       ],
       trackedLists: [
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=male",
           name: "UX/UI Designer",
           jobTitle: "Upwork",
           date: "",
@@ -461,7 +461,7 @@ export default {
           isRing: false,
         },
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=female",
           name: "Product designer",
           jobTitle: "Facebook",
           date: "",

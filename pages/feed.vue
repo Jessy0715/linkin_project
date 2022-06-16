@@ -17,7 +17,7 @@
         <small slot="state" v-html="item.state"></small>
         <v-img
           slot="avatar"
-          src="https://randomuser.me/api/portraits/med/women/3.jpg"
+          :src="item.avatar"
         ></v-img>
         <template slot="name">{{ item.name }}</template>
         <template slot="jobTitle">{{ item.jobTitle }}</template>
@@ -122,7 +122,7 @@ export default {
         {
           state:
             "<span class='blue--text text--darken-2'>Ted Bell</span>,<span class='blue--text text--darken-2'>    Annette Nguyen</span>, and <span class='blue--text text--darken-2'>Cody Hawkins </span>liked this",
-          avatar: "",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
           name: "Theresa Steward",
           jobTitle: "iOS developer",
           context:
@@ -133,7 +133,7 @@ export default {
         {
           state:
             "<span class='blue--text text--darken-2'>Audrey Alexander</span> comment this",
-          avatar: "",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=female",
           name: "Kyle Fisher",
           jobTitle: "Product designer at Commandor Corp.",
           context: "How’s your day going, guys?",
@@ -142,7 +142,7 @@ export default {
         },
         {
           state: "High rated post from your feed",
-          avatar: "",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
           name: "Brandon Wilson",
           jobTitle: "Senior UX designer",
           context: "There is some new guidelines for iOS",
@@ -152,7 +152,7 @@ export default {
         {
           state:
             "First post from <span class='blue--text text--darken-2'>Audrey Alexander</span>",
-          avatar: "",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=female",
           name: "Audrey Alexander",
           jobTitle: "Team lead at Google",
           context:
@@ -163,7 +163,7 @@ export default {
       ],
       feedLists: [
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=female",
           connections: "",
           workRange: "",
           workRangeNote: "",
@@ -173,7 +173,7 @@ export default {
           intro: "",
         },
         {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
           connections: "",
           workRange: "",
           workRangeNote: "",
@@ -185,7 +185,7 @@ export default {
       ],
       groupList: [
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=male",
           name: "<strong>Moscow State <br> Linguistical <br> University</strong>",
           jobTitle: "",
           date: "",
@@ -193,7 +193,7 @@ export default {
           isRing: false,
         },
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=female",
           name: "<strong>Digital freelancers <br> group</strong>",
           jobTitle: "",
           date: "",
@@ -201,7 +201,7 @@ export default {
           isRing: false,
         },
         {
-          src: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          src: "https://xsgames.co/randomusers/avatar.php?g=male",
           name: "<strong>Interaction<br> design<br> association</strong>",
           jobTitle: "",
           date: "",

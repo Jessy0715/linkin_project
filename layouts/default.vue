@@ -1,8 +1,14 @@
 <template>
   <!-- 
-    Vuetify 
+    Vuetify:
     1.v-tabs 元件 class 狀態不能預先移除 => 自己建立 navbar
     2.建立 PC 與 MB版本 v-app-bar
+
+    3.主要 icon 參考連結:
+    https://pictogrammers.github.io/@mdi/font/1.1.34/
+    4. git push origin 錯誤: Permission to xxx.git denied to bbb. 
+    The requested URL returned error: 403
+    解決 => 修改.git/config 的remote url
   -->
   <v-app dark>
     <v-navigation-drawer

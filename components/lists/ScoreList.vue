@@ -4,7 +4,7 @@
       <div class="font-weight-bold text-uppercase text-subtitle-1">
         your dashboard
       </div>
-      <div class="font-weight-medium text-uppercase blue--text text--darken-2" style="border-bottom: .5px solid #1976D2">
+      <div class="font-weight-medium text-uppercase blue--text text--darken-2" style="border-bottom: .5px solid #1976D2; cursor: pointer">
         go to stats
       </div>
     </div>
@@ -12,7 +12,7 @@
     <v-list-item v-for="(item, idx) in list" :key="idx">
       <v-list-item-content class="py-2">
         <v-list-item-title>
-          <span class="blue--text text--darken-2 display-2 font-weight-bold" style="">{{ item.score }}</span>
+          <span class="blue--text text--darken-2 display-2 font-weight-bold">{{ item.score }}</span>
         </v-list-item-title>
         <v-list-item-subtitle>
           <span class="black--text text-subtitle-1">{{ item.text }}</span>

@@ -13,7 +13,7 @@
 </template>
 <script>
 export default {
-  name: "",
+  name: "TagList",
   data() {
     return {
       tagList: [

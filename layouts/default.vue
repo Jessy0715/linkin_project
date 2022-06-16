@@ -202,7 +202,7 @@
         <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
       </v-avatar>
       <div style="flex-grow: 1">
-        <div>D. Kargaev &nbsp; <span class="grey--text">YOU</span></div>
+        <div>D. Kargaev &nbsp;</div>
         <div>
           <span class="grey--text"> 367 views today</span>
           <span class="green--text text--accent-4">+32</span>

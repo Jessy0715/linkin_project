@@ -3,7 +3,7 @@
     <template v-for="(item, idx) in list">
       <v-list-item
         :key="idx"
-        style="border-radius: 5px; border: 1px solid #eee;margin-bottom: 16px"
+        style="border-radius: 5px; border: 1px solid #eee; margin-bottom: 16px"
         :style="isSearchPage? 'background: #e8f1f8':'background: #fff'"
       >
         <v-list-item-avatar v-if="!isSearchPage">
@@ -29,7 +29,7 @@
 </template>
 <script>
 export default {
-  name: "",
+  name: "SmList",
   props: {
     list: {
       type: Array,

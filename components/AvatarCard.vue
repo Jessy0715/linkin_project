@@ -18,7 +18,7 @@
         <div class="text-subtitle-1 font-weight-bold">
           <div class="d-flex align-center">
             <div class="mr-1">Dmitry Kargaev</div>
-            <v-icon small color="amber darken-1">mdi-linkedin </v-icon>
+            <v-icon small color="#d1ad68">mdi-linkedin </v-icon>
           </div>
         </div>
         <div class="text-center px-2">
@@ -30,7 +30,7 @@
 </template>
 <script>
 export default {
-  name: "",
+  name: "AvatarCard",
   data() {
     return {};
   },

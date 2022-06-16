@@ -24,7 +24,7 @@
 </template>
 <script>
 export default {
-  name: "",
+  name: "SideList",
   props: {
     list: {
       type: Array,

@@ -170,7 +170,7 @@
           class="d-flex justify-space-between align-center text-uppercase my-2"
         >
           <div class="font-weight-medium">visitors</div>
-          <div class="font-weight-medium blue--text text--darken-2">
+          <div class="font-weight-medium blue--text text--darken-2" style="cursor: pointer">
             view all
           </div>
         </div>

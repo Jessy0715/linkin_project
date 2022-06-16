@@ -35,7 +35,7 @@
           class="d-flex justify-space-between align-center text-uppercase my-2"
         >
           <div class="font-weight-medium">my searches</div>
-          <div class="font-weight-medium blue--text text--darken-2">
+          <div class="font-weight-medium blue--text text--darken-2" style="cursor: pointer">
             Edit list
           </div>
         </div>

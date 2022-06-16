@@ -47,7 +47,7 @@
 </template>
 <script>
 export default {
-  name: "",
+  name: "MsgCard",
   data() {
     return {
 

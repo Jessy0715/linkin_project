@@ -1,7 +1,7 @@
 <template>
-  <v-list>
+  <v-list style="border-radius: 5px;">
     <template v-for="(item, idx) in list">
-      <v-list-item :key="idx" style="border-radius: 5px;margin-bottom: 16px;">
+      <v-list-item :key="idx" :style="idx !== list.length -1? 'border-bottom: 1px solid #eee':'border-bottom: 0'" class="py-2">
         <section class="avatars-group py-3 stacked" :style="$vuetify.breakpoint.lg ?'width: 12%':'width: 30%'">
           <div
             v-for="avatar in avatarsStackedLimited"

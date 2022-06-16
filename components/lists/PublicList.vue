@@ -1,5 +1,5 @@
 <template>
-  <v-list three-line>
+  <v-list three-line style="border-radius: 5px; background: transparent">
     <template v-for="(item, index) in list">
       <v-divider
         v-if="item.divider"
@@ -10,7 +10,7 @@
       <v-list-item
         v-else
         :key="item.title"
-        style="border-radius: 5px"
+        style="border-radius: 5px;"
         :style="
           isFeedPage
             ? 'background: #e8f1f8; margin-bottom: 16px;'
@@ -78,15 +78,15 @@
             </div>
           </v-list-item-subtitle>
         </v-list-item-content>
-        <v-list-item-content v-if="isNetworkPage" class="d-none d-md-block">
-          <div class="text-caption px-4" style="border-left: 2px solid #1976d2">
+        <v-list-item-content v-if="isNetworkPage" class="d-none d-md-block" style="flex-grow: 2;">
+          <div class="text-caption px-4" style="border-left: 2px solid #1976d2;">
             Hey, I saw your works. I like it! Can we do something together? Or
             maybe you have project for UX at the moment?
           </div>
         </v-list-item-content>
         <v-list-item-action
           :style="
-            isFeedPage || isJobPage
+            isFeedPage || isJobPage || isNetworkPage
               ? 'margin-top: auto; margin-bottom: auto'
               : ''
           "

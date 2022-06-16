@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" align="start">
+  <v-row justify="center" align="start" class="my-6">
     <v-col cols="12" sm="8" md="8">
       <post-card class="mb-6" :isJobPage="true">
         <v-card-title class="text-uppercase" slot="title"

@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" align="start">
+  <v-row justify="center" align="start" class="my-6">
     <v-col cols="12" sm="4" md="4">
       <side-list class="mb-4" :list="sideLists2" :isNote="true"></side-list>
       <v-card class="mb-4">
@@ -11,14 +11,14 @@
         <template slot="txt">recent</template>
         <span class="blue--text text--darken-2" slot="txt2"> </span>
       </divider>
-      <div class="mb-2">
+      <div class="mb-6">
         <chat-list :list="chatLists"></chat-list>
       </div>
       <divider>
         <template slot="txt">earlier</template>
         <span class="blue--text text--darken-2" slot="txt2"> </span>
       </divider>
-      <div class="mb-2">
+      <div class="mb-6">
         <chat-list :list="chatLists2"></chat-list>
       </div>
     </v-col>

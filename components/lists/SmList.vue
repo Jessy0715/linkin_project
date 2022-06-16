@@ -1,5 +1,5 @@
 <template>
-  <v-list two-line :style="isSearchPage?'background: #fff':'background: #fcfefd'">
+  <v-list two-line :style="isSearchPage?'background: #fff':'background: transparent'">
     <template v-for="(item, idx) in list">
       <v-list-item
         :key="idx"

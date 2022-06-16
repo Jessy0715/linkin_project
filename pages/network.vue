@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" align="start">
+  <v-row justify="center" align="start" class="my-6">
     <v-col cols="12" sm="4" md="4">
       <side-list class="mb-4" :list="sideLists"></side-list>
     </v-col>

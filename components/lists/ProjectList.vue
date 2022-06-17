@@ -2,7 +2,7 @@
   <v-row justify="start" align="start" class="mb-2">
     <v-col cols="12" :sm="isVertical? '12':'4'" :md="isVertical? '12':'4'" v-for="(item, idx) in lists" :key="idx">
       <v-card style="box-shadow: none" :class="{'d-flex': isVertical }">
-        <v-img :src="item.img" :max-width="isVertical? '150': null">
+        <v-img :src="item.img" :max-width="isVertical? '150': null" :height="height">
           <v-btn color="primary" x-small class="play-btn" v-if="isVideo" width="25" height="25">
             <v-icon size="20"> mdi mdi-play </v-icon>
           </v-btn>
@@ -31,6 +31,9 @@ export default {
     isVertical: {
       type: Boolean,
       default: false
+    },
+    height: {
+      type: String
     }
   },
   data() {

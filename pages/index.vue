@@ -1,11 +1,14 @@
 <template>
+<!-- 
+  v-img 组件中的 src 属性不能直接使用相對路徑，需加入 require
+-->
   <v-row justify="center" align="start">
     <v-col cols="12" sm="8" md="8">
       <div class="d-block d-md-none">
         <auto-complete :show="getAppearState"></auto-complete>
       </div>
       <v-card class="logo d-flex justify-center">
-        <v-img src="https://picsum.photos/350/165?random" height="200px">
+        <v-img :src="require('../assets/images/bg.jpg')" height="200px">
           <v-card-title>
             <v-btn dark icon>
               <v-icon>mdi-upload</v-icon>
@@ -113,7 +116,7 @@
           <div class="text-h6 font-weight-bold mr-4">Projects</div>
           <div>3 of 12</div>
         </div>
-        <project-list :lists="imgSet"></project-list>
+        <project-list :lists="imgSet" height="250"></project-list>
         <small
           class="blue--text text--darken-2 font-weight-bold text-uppercase"
           style="cursor: pointer"
@@ -199,6 +202,7 @@
           :lists="courseSet"
           :isVideo="true"
           :isVertical="true"
+          height="100"
         ></project-list>
         <small
           class="blue--text text--darken-2 font-weight-bold text-uppercase"
@@ -244,22 +248,20 @@ export default {
       imgSmall: "",
       imgSmallS3: "",
       imgThumb: "",
+      bigBg: "",
       currentTab: "",
       showUp: false,
       tabs: ["Profile", "Activity & interests", "Articles (3)"],
       imgSet: [
         {
-          imgUrl: "../../assets/images/office.jpg",
           title: "Zara redesign concept",
           caption: "UX/UI design, 15.07.2019",
         },
         {
-          imgUrl: "../../assets/images/office.jpg",
           title: "SCTHON event brand",
           caption: "Graphic design, 03.31.2019",
         },
         {
-          imgUrl: "../../assets/images/office.jpg",
           title: "Drozd. Brand identity. 2016",
           caption: "Graphic design, 03.04.2016",
         },
@@ -492,7 +494,6 @@ export default {
           isRing: false,
         },
       ],
-      imgArr: [],
     };
   },
   computed: {
@@ -516,32 +517,29 @@ export default {
       const index = this.friends.indexOf(item.name);
       if (index >= 0) this.friends.splice(index, 1);
     },
-    async getImg() {
+    async getImgList() {
+      // 可用 API: https://vue-lessons-api.herokuapp.com/photo/list
       try {
         const res = await axios.get(
           "https://api.unsplash.com/photos/?client_id=UbYwY8eImChNi9nZQ_8VgA4Bhhj1TMhPSZ4V8i_B5S0"
         );
-        const imgArr = res.data.slice(0, 3).map((item) => item.urls.small);
-        this.connection(imgArr);
+        const courseSetArr = res.data.slice(0, 3).map((item) => item.urls.small);
+        const imgSetArr = res.data.slice(4, 7).map((item) => item.urls.small_s3);
+        this.connection(courseSetArr, 'courseSet');
+        this.connection(imgSetArr, 'imgSet');
       } catch (err) {
         console.log(err);
       }
     },
-    // async getImg() {
-    //   const res = await axios.get("https://vue-lessons-api.herokuapp.com/photo/list")
-    //   const imgArr = res.data.slice(0, 3).map((item) => item.url)
-    //   console.log(imgArr);
-    //   this.connection(imgArr);
-    // },
-    connection(arr) {
-      for (let i = 0; i < this.courseSet.length; i++) {
-        this.$set(this.courseSet[i], 'img', arr[i])
+    connection(arr, arrName) {
+      for (let i = 0; i < this[arrName].length; i++) {
+        this.$set(this[arrName][i], 'img', arr[i])
       }
       // console.log(this.courseSet);
     },
   },
   mounted() {
-    this.getImg();
+    this.getImgList();
   },
 };
 </script>

@@ -90,6 +90,7 @@
           :lists="courseSet"
           :isVideo="false"
           :isVertical="true"
+          height="100"
         ></project-list>
       </v-card>
     </v-col>
@@ -233,13 +234,13 @@ export default {
     showText() {
       console.log("text");
     },
-    async getImg() {
+    async getImgList() {
       try {
         const res = await axios.get(
           "https://api.unsplash.com/photos/?client_id=UbYwY8eImChNi9nZQ_8VgA4Bhhj1TMhPSZ4V8i_B5S0"
         );
-        const imgArr = res.data.slice(7, 10).map((item) => item.urls.small);
-        this.connection(imgArr);
+        const courseSetArr = res.data.slice(7, 10).map((item) => item.urls.small);
+        this.connection(courseSetArr);
       } catch (err) {
         console.log(err);
       }
@@ -252,7 +253,7 @@ export default {
     },
   },
   mounted() {
-    this.getImg();
+    this.getImgList();
   },
 };
 </script>

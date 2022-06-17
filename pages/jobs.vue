@@ -72,6 +72,8 @@ import PublicList from "@/components/lists/PublicList";
 import SmList from "@/components/lists/SmList";
 import ProjectList from "@/components/lists/ProjectList";
 import BtnShow from "@/components/BtnShow";
+
+import axios from "axios";
 export default {
   name: "jobs",
   components: {
@@ -214,6 +216,27 @@ export default {
       ],
     };
   },
+  methods: {
+    async getImg() {
+      try {
+        const res = await axios.get(
+          "https://api.unsplash.com/photos/?client_id=UbYwY8eImChNi9nZQ_8VgA4Bhhj1TMhPSZ4V8i_B5S0"
+        );
+        const imgArr = res.data.slice(4, 7).map((item) => item.urls.small);
+        this.connection(imgArr);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    connection(arr) {      
+      for (let i = 0; i < this.courseSet.length; i++) {
+        this.$set(this.courseSet[i], 'img', arr[i])
+      }
+    },
+  },
+  mounted() {
+    this.getImg();
+  }
 };
 </script>
 <style lang="scss" scoped>

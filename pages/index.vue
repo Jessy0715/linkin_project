@@ -50,7 +50,9 @@
                 </div>
               </div>
               <div>
-                <v-icon color="primary" small style="transform: rotate(30deg)">mdi-navigation</v-icon>
+                <v-icon color="primary" small style="transform: rotate(30deg)"
+                  >mdi-navigation</v-icon
+                >
                 <small>Saint Petersburg, Russian Federation</small>
               </div>
             </div>
@@ -66,10 +68,7 @@
                 align-center
               "
             >
-              <v-btn
-                color="primary"
-                class="mr-md-3 mb-4 mb-md-0"
-              >
+              <v-btn color="primary" class="mr-md-3 mb-4 mb-md-0">
                 <span class="white--text">Contact info</span></v-btn
               >
               <v-btn outlined color="primary"> 1,043 connections </v-btn>
@@ -92,12 +91,20 @@
       </v-tabs>
       <v-card class="pa-4 mb-4">
         <div class="text-h6 font-weight-bold mb-4">About</div>
+        <!-- <img :src="imgFull" alt="" width="300" />
+        <img :src="imgRaw" alt="" width="300" />
+        <img :src="imgRegular" alt="" width="300" />
+        <img :src="imgSmall" alt="" width="300" />
+        <img :src="imgSmallS3" alt="" width="300" />
+        <img :src="imgThumb" alt="" width="300" /> -->
         <p class="text-body-2">
           I'm more experienced in eCommerce web projects and mobile banking
           apps, but also like to work with creative projects, such as landing
           pages or unusual corporate websites.
         </p>
-        <small class="blue--text text--darken-2 font-weight-bold text-uppercase" style="cursor: pointer"
+        <small
+          class="blue--text text--darken-2 font-weight-bold text-uppercase"
+          style="cursor: pointer"
           >See more</small
         >
       </v-card>
@@ -107,7 +114,9 @@
           <div>3 of 12</div>
         </div>
         <project-list :lists="imgSet"></project-list>
-        <small class="blue--text text--darken-2 font-weight-bold text-uppercase" style="cursor: pointer"
+        <small
+          class="blue--text text--darken-2 font-weight-bold text-uppercase"
+          style="cursor: pointer"
           >Show all (12)</small
         >
       </v-card>
@@ -148,7 +157,9 @@
             </v-list-item>
           </v-col>
         </v-row>
-        <small class="blue--text text--darken-2 font-weight-bold text-uppercase" style="cursor: pointer"
+        <small
+          class="blue--text text--darken-2 font-weight-bold text-uppercase"
+          style="cursor: pointer"
           >Show all (17)</small
         >
       </v-card>
@@ -170,7 +181,10 @@
           class="d-flex justify-space-between align-center text-uppercase my-2"
         >
           <div class="font-weight-medium">visitors</div>
-          <div class="font-weight-medium blue--text text--darken-2" style="cursor: pointer">
+          <div
+            class="font-weight-medium blue--text text--darken-2"
+            style="cursor: pointer"
+          >
             view all
           </div>
         </div>
@@ -186,7 +200,9 @@
           :isVideo="true"
           :isVertical="true"
         ></project-list>
-        <small class="blue--text text--darken-2 font-weight-bold text-uppercase" style="cursor: pointer"
+        <small
+          class="blue--text text--darken-2 font-weight-bold text-uppercase"
+          style="cursor: pointer"
           >See all recommendations</small
         >
       </v-card>
@@ -209,6 +225,7 @@ import ScoreList from "@/components/lists/ScoreList";
 import SmList from "@/components/lists/SmList";
 import AutoComplete from "@/components/AutoComplete";
 
+import axios from "axios";
 export default {
   name: "IndexPage",
   components: {
@@ -221,6 +238,12 @@ export default {
   },
   data() {
     return {
+      imgFull: "",
+      imgRaw: "",
+      imgRegular: "",
+      imgSmall: "",
+      imgSmallS3: "",
+      imgThumb: "",
       currentTab: "",
       showUp: false,
       tabs: ["Profile", "Activity & interests", "Articles (3)"],
@@ -469,6 +492,7 @@ export default {
           isRing: false,
         },
       ],
+      imgArr: [],
     };
   },
   computed: {
@@ -486,11 +510,38 @@ export default {
       return this.$store.getters.getAppear;
     },
   },
+
   methods: {
     remove(item) {
       const index = this.friends.indexOf(item.name);
       if (index >= 0) this.friends.splice(index, 1);
     },
+    async getImg() {
+      try {
+        const res = await axios.get(
+          "https://api.unsplash.com/photos/?client_id=UbYwY8eImChNi9nZQ_8VgA4Bhhj1TMhPSZ4V8i_B5S0"
+        );
+        const imgArr = res.data.slice(0, 3).map((item) => item.urls.small);
+        this.connection(imgArr);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    // async getImg() {
+    //   const res = await axios.get("https://vue-lessons-api.herokuapp.com/photo/list")
+    //   const imgArr = res.data.slice(0, 3).map((item) => item.url)
+    //   console.log(imgArr);
+    //   this.connection(imgArr);
+    // },
+    connection(arr) {
+      for (let i = 0; i < this.courseSet.length; i++) {
+        this.$set(this.courseSet[i], 'img', arr[i])
+      }
+      // console.log(this.courseSet);
+    },
+  },
+  mounted() {
+    this.getImg();
   },
 };
 </script>

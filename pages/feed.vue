@@ -15,10 +15,7 @@
       </divider>
       <msg-card v-for="(item, idx) in slotArray" :key="idx" class="mb-6">
         <small slot="state" v-html="item.state"></small>
-        <v-img
-          slot="avatar"
-          :src="item.avatar"
-        ></v-img>
+        <v-img slot="avatar" :src="item.avatar"></v-img>
         <template slot="name">{{ item.name }}</template>
         <template slot="jobTitle">{{ item.jobTitle }}</template>
         <p class="text-body-2">
@@ -69,7 +66,12 @@
         <v-divider class="my-4"></v-divider>
         <sm-list class="mt-2" :list="groupList" :isGroupPage="true"></sm-list>
         <div
-          class="text-uppercase blue--text text--darken-2 text-body-2 font-weight-medium"
+          class="
+            text-uppercase
+            blue--text
+            text--darken-2 text-body-2
+            font-weight-medium
+          "
           style="cursor: pointer"
         >
           Show all (8)
@@ -103,6 +105,8 @@ import BtnShow from "@/components/BtnShow";
 import SmList from "@/components/lists/SmList";
 import TagList from "@/components/lists/TagList";
 import Divider from "@/components/Divider";
+
+import axios from "axios";
 export default {
   name: "feed",
   components: {
@@ -229,6 +233,26 @@ export default {
     showText() {
       console.log("text");
     },
+    async getImg() {
+      try {
+        const res = await axios.get(
+          "https://api.unsplash.com/photos/?client_id=UbYwY8eImChNi9nZQ_8VgA4Bhhj1TMhPSZ4V8i_B5S0"
+        );
+        const imgArr = res.data.slice(7, 10).map((item) => item.urls.small);
+        this.connection(imgArr);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    connection(arr) {
+      for (let i = 0; i < this.courseSet.length; i++) {
+        this.$set(this.courseSet[i], "img", arr[i]);
+      }
+      console.log(this.courseSet);
+    },
+  },
+  mounted() {
+    this.getImg();
   },
 };
 </script>

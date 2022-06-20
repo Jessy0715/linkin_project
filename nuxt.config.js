@@ -1,5 +1,14 @@
 import colors from "vuetify/es5/util/colors";
 
+const routerBase =
+  process.env.DEPLOY_ENV === 'GH_PAGES'
+    ? {
+        router: {
+          base: '/resume/'
+        }
+      }
+    : {}
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -20,7 +29,7 @@ export default {
     color: 'blue',
     height: '5px'
   },
-
+  ...routerBase,
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 

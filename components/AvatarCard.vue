@@ -2,7 +2,7 @@
   <v-card>
     <v-img
       height="200"
-      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+      :src="require('../assets/images/office3.jpg')"
     ></v-img>
     <div class="d-flex justify-center">
       <v-avatar size="100" style="margin-top: -10%; border: 4px solid #fff">

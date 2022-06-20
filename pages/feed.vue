@@ -23,7 +23,7 @@
         </p>
         <v-img
           v-if="idx == 1"
-          :src="require('../assets/images/office.jpg')"
+          :src="require('../assets/images/office2.jpg')"
           max-height="250"
           class="mb-4"
         ></v-img>
